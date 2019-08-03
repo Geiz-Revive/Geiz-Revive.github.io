@@ -10,7 +10,7 @@
     
     
     
-    <title>杜教筛学习笔记 | Geiz-Revive</title>
+    <title>tags: 动态dp | Geiz-Revive</title>
     <link href="”http://Geiz-Revive.github.io“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -177,34 +177,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    
-<article class="article well article-body" id="article">
+                    <article class="article well article-body" id="article-tag">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="http://Geiz-Revive.github.io">Geiz-Revive</a>
         >
-        <span>杜教筛学习笔记</span>
+        <span>标签</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2019/07/18/杜教筛学习笔记/">杜教筛学习笔记</a>
+                <a href="/tags/动态dp/index.html">动态dp</a>
             </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/数学/">数学</a>
-                
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2019-07-18
-            </span>
-            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -212,74 +197,21 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2019/07/18/杜教筛学习笔记/">杜教筛学习笔记</a>
+                    <a href="/tags/动态dp/index.html">动态dp</a>
                 </h4>
             </div>
-            <p>
-                <i class="fa fa-calendar"></i> 2019-07-18
-            </p>
-            <p>
-                
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/数学/">数学</a>
-                
-                
-                
-            </p>
         </center>
     </div>
-    <div class="content-article">
-        <h2 id="狄利克雷卷积"><a href="#狄利克雷卷积" class="headerlink" title="狄利克雷卷积"></a>狄利克雷卷积</h2><ul>
-<li>定义：对于积性函数$f(n)$和$g(n)$，$(f\ast g)(n)=\sum\limits f(d)g(\dfrac{n}{d})$</li>
-</ul>
-<p>常见完全积性函数：</p>
-<ul>
-<li>元函数 $\epsilon(n)=[n=1]$</li>
-<li>单位函数$id(n)=n$</li>
-<li>常数函数$1(n)=1$</li>
-</ul>
-<p>常见卷积：</p>
-<p>1：</p>
-<ul>
-<li>因为$\sum\limits_{d|n}\mu(d)=[n=1]=\epsilon$</li>
-<li>所以两边卷个1得到$\mu \ast 1=\epsilon$</li>
-<li>然后我们可以得出$\sum\limits_{i=1}^n(1*\mu)=1$</li>
-</ul>
-<p>2：</p>
-<ul>
-<li>因为$\sum\limits_{d|n}\phi(d)=n=id(n)$</li>
-<li>所以卷个1得到$\phi\ast1=id$</li>
-<li>然后可以得到$\sum\limits_{i=1}^n(1*\phi)=\sum\limits_{i=1}^nid(i)=\dfrac{n\ast (n+1)}{2}$</li>
-</ul>
-<p>3 :</p>
-<ul>
-<li>因为$\phi\ast1=id$</li>
-<li>两边卷个$\mu$得到$\phi * 1 * \mu=id\ast\mu$</li>
-<li>$\phi\ast\epsilon=id\ast\mu$</li>
-<li>$\phi(n)=\sum\limits_{d|n}\mu(d)\times\dfrac{n}{d}$</li>
-<li>两边同除以$n$得$\dfrac{\phi(n)}{n}=\sum\limits_{d|n}\dfrac{\mu(d)}{d}$</li>
-</ul>
-<p>4 :</p>
-<ul>
-<li>$\sum\limits_{i=1}^ni^k\ast\phi(i)$</li>
-<li>卷上$id^k$得$\sum\limits_{d|n}d^k\phi(d)*(\dfrac{n}{d})^k=n^k$</li>
-</ul>
-<h1 id="杜教筛"><a href="#杜教筛" class="headerlink" title="杜教筛"></a>杜教筛</h1><p>其实就是一个式子：</p>
-<p>$g(1)S(n)=\sum\limits_{i=1}^n(f\ast g)-\sum\limits_{i=2}^ng(i)S(\dfrac{n}{i})$</p>
-<p>杜教筛用于快速求前缀和，复杂度似乎是$\Theta(n^{\frac{2}{3}})$，然而我并不会证明。</p>
-<p>有了这个式子，我们就可以利用一个好算的卷积前缀和递归求解一个和式。</p>
-<p>由上面的常见卷积1可得：$S(n)=\sum\limits_{i=1}^n\epsilon(i)-\sum\limits_{i=2}^nS(\dfrac{n}{i})=1-\sum\limits_{i=2}^nS(\dfrac{n}{i})$</p>
-<p>后面那个式子显然可以整除分块。</p>
-<p>其他的同理。</p>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><ul>
-<li>咕</li>
-</ul>
-
+    <div class="content-article" style="margin-top: 30px;">
+        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
+            
+            <a href="/2019/08/03/SP1716-GSS3/">SP1716-GSS3</a>
+            <br>
+            
+            
+        </div>
     </div>
 </article>
-
-
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -452,13 +384,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/07/16/虚树学习笔记/">虚树学习笔记</a>
+                    <a href="/2019/06/21/CF785E-Anton-and-Permutation/">CF785E-Anton-and-Permutation</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/06/04/洛谷-P4556-Vani有约会-雨天的尾巴/">洛谷 P4556 [Vani有约会] 雨天的尾巴</a>
+                    <a href="/2019/07/16/虚树学习笔记/">虚树学习笔记</a>
                 </span>
             </li>
             
@@ -479,17 +411,17 @@
 
                 
                 <li>
-                    <a href="/2019/07/18/杜教筛学习笔记/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/tags/动态dp/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2019/07/18/杜教筛学习笔记/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/tags/动态dp/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2019/07/18/杜教筛学习笔记/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/tags/动态dp/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -497,21 +429,21 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/动态dp/" style="font-size: 10.210558081744427px;" class="tag-cloud-link">动态dp</a>
+    <a href="/tags/动态dp/" style="font-size: 12.980551773317675px;" class="tag-cloud-link">动态dp</a>
     
-    <a href="/tags/LCT/" style="font-size: 8.762682276698753px;" class="tag-cloud-link">LCT</a>
+    <a href="/tags/LCT/" style="font-size: 18.761960919530274px;" class="tag-cloud-link">LCT</a>
     
-    <a href="/tags/线段树/" style="font-size: 9.933633365691371px;" class="tag-cloud-link">线段树</a>
+    <a href="/tags/线段树/" style="font-size: 19.381460486053015px;" class="tag-cloud-link">线段树</a>
     
-    <a href="/tags/数学/" style="font-size: 14.762112789044107px;" class="tag-cloud-link">数学</a>
+    <a href="/tags/数学/" style="font-size: 9.704964640172289px;" class="tag-cloud-link">数学</a>
     
-    <a href="/tags/主席树/" style="font-size: 10.648809520417826px;" class="tag-cloud-link">主席树</a>
+    <a href="/tags/主席树/" style="font-size: 16.116758543840334px;" class="tag-cloud-link">主席树</a>
     
-    <a href="/tags/虚树/" style="font-size: 14.329921210194996px;" class="tag-cloud-link">虚树</a>
+    <a href="/tags/虚树/" style="font-size: 10.709937615786188px;" class="tag-cloud-link">虚树</a>
     
-    <a href="/tags/线段树合并/" style="font-size: 19.11282845496991px;" class="tag-cloud-link">线段树合并</a>
+    <a href="/tags/线段树合并/" style="font-size: 19.644778863464538px;" class="tag-cloud-link">线段树合并</a>
     
-    <a href="/tags/莫队/" style="font-size: 17.967708736735247px;" class="tag-cloud-link">莫队</a>
+    <a href="/tags/莫队/" style="font-size: 19.49051147360061px;" class="tag-cloud-link">莫队</a>
     
 </div>
                 
