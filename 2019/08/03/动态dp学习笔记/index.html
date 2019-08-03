@@ -195,6 +195,13 @@
         <div class="tag-article">
             
             <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/动态dp/">动态dp</a>
+                
+            </span>
+            
+            <span class="label label-gal">
                 <i class="fa fa-calendar"></i> 2019-08-03
             </span>
             
@@ -213,12 +220,66 @@
             </p>
             <p>
                 
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/动态dp/">动态dp</a>
+                
+                
                 
             </p>
         </center>
     </div>
     <div class="content-article">
-        
+        <p>动态$dp$是指有修改的$dp$问题，通常的解决方法是把转移方程写成矩阵，然后用数据结构维护矩阵连乘积，这里的乘法是重定义的运算，取决于原dp问题的转移方程。比如最大子段和就是求和再取$max$。</p>
+<p>但是维护连乘积的前提条件是在序列上，如果是在树上，就需要通过一些技巧转化为序列问题。</p>
+<p>$\Large 例题\alpha$：</p>
+<p>先来一道比较水的：</p>
+<p><a href="https://www.luogu.org/problem/SP1716" target="_blank" rel="noopener">$Link$</a></p>
+<p>$n$ 个数，$q$ 次操作$(n,q\le50000)$</p>
+<p>操作<code>0 x y</code>$A_x$ 修改为$y$</p>
+<p>操作<code>1 l r</code>询问区间$[l,r]$ 的最大子段和</p>
+<p>$\large Solution 1:$</p>
+<p>显然可以用线段树维护前后缀的最大和来解决，这里不再占用篇幅。</p>
+<p>$\large Solution 2:$</p>
+<p>考虑原转移方程的形式：$dp_i=max(dp_{i-1}+a[i],a[i]),ans=max(ans,dp_{i-1}+a[i],a[i])$</p>
+<p>所以矩阵就可以写出来了：</p>
+<p>$\left( \begin{matrix} tmp_{i-1}&amp;ans_{i-1}&amp;0\end{matrix} \right)\left( \begin{matrix}a_i&amp;a_i&amp;-inf\ -inf&amp;0&amp;-inf\ a_i&amp;a_i&amp;0\end{matrix} \right) = \left( \begin{matrix} tmp_{i}&amp;ans_{i}&amp;0\end{matrix} \right)$</p>
+<p>我们将平常的矩阵乘法换成这样的形式$c[i][j]=max_k(a[i][k]+b[k][j])$</p>
+<p>线段树维护那个大矩阵连乘积即可，修改就是把每个位置上的$a_i$改了再$pushup$</p>
+<p>$\Large 例题\beta$：</p>
+<p><a href="https://www.luogu.org/problem/P4719" target="_blank" rel="noopener">$Link$</a></p>
+<p>给定一棵$n$个点的树，点带点权。</p>
+<p>有$m$次操作，每次操作给定$x,y$表示修改点$x$的权值为$y$。</p>
+<p>你需要在每次操作之后求出这棵树的最大权独立集的权值大小。</p>
+<p>没有修改肯定都会做，方程是：</p>
+<p>$dp_{u,0}=\sum\limits_{v∈uson}max(dp_{v,0},dp_{v,1}),dp_{u,1}=val_u+\sum\limits_{v∈uson}dp_{v,0}$</p>
+<p>其中$v$是$u$的儿子</p>
+<p>重点在于如何把这个方程转化到能在序列上使用。</p>
+<p>我们发现这个东西似乎可以变换一下顺序也没什么影响，所以我们可以一条重链一条重链的dp，每次到达一个重链的顶部的时候我们直接将这个重链全部塞到队列里，然后我们递归下去遍历和重链相连的所有重链，最后处理这个重链。</p>
+<p>然后对于重链上的每个点，先根据轻儿子的$dp$值(因为轻儿子一定是其他重链的顶部所以dp值必定已经计算好)，计算出一个$ldp_{i,0/1}$，然后根据这个$ldp$值在重链上跑序列$dp$。</p>
+<p>方程为：$ldp_{u,0}=\sum\limits_{v∈lightson}max(dp_{v,0},dp_{v,1}),ldp_{u,1}=\sum\limits_{v∈lightson}dp_{v,0}$</p>
+<p>之后可以得到：$dp_{u,0}=max(dp_{heavy,0},dp_{heavy,1})+ldp_{u,0},dp_{u,1}=val_u+ldp_{u,1}+dp_{heavy,0}$</p>
+<p>矩乘形式同上，矩阵为：</p>
+<p>$\left( \begin{matrix}dp_{i-1,0}&amp;dp_{i-1,1}\end{matrix} \right)\left( \begin{matrix}ldp_{i,0}&amp;ldp_{i,1}\ldp_{i,0}&amp;-∞\end{matrix} \right) = \left( \begin{matrix}dp_{i,0}&amp;dp_{i,1} \end{matrix} \right)$</p>
+<p>树剖就可以$nlog^2n$维护了</p>
+<p>但是还有一个$log$的黑科技：“全局平衡二叉树”，也就是所谓的静态$lct$</p>
+<p>以下引用自<a href="https://www.luogu.org/space/show?uid=56384" target="_blank" rel="noopener">shadowice1984</a>大佬的题解：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">众所周知把刚才的树剖换成lct就可以做到一个log了，但是我们发现lct实在是常数太!大!了！绝对是跑不过实现的优秀的一点的树剖的</span><br><span class="line"></span><br><span class="line">但是我们对于lct的复杂度证明却很感兴趣，为啥同样是操作了logn个数据结构，把线段树换成常数更大的splay复杂度反而少了一个log呢？(刚才这句话严格来讲是病句，常数和复杂度没有任何关联)</span><br><span class="line"></span><br><span class="line">具体证明需要用到势能分析，但是感性理解一下就是如果我们把lct上的虚边也看成splay的边的话，我们发现整棵lct变成了一棵大splay，只是有些点度数不是2了</span><br><span class="line"></span><br><span class="line">但是这些点度不是2的点并未破坏splay的势能分析换句话说势能分析对整颗大splay仍然生效, 所以你的log次splay在整个大splay上只是一次splay而已</span><br><span class="line"></span><br><span class="line">复杂度自然是均摊O(logn)了</span><br><span class="line"></span><br><span class="line">但是，我们发现这是颗静态树，使用splay实在是大(常)材(数)小(过)用(大)了</span><br><span class="line"></span><br><span class="line">于是我们考虑将lct强行静态化，换句话说，建一个像splay一样的全局平衡的树</span><br><span class="line"></span><br><span class="line">观察到线段树只是局部平衡的，在碰到专业卡链剖的数据--链式堆(根号n个长度为根号n的链连成完全二叉树的形状)的时候会导致算上虚边之后的整颗树左倾或者右倾</span><br><span class="line"></span><br><span class="line">此时我们发现如果在建线段树的时候做点手脚，我们把线段树换成二叉查找树bst，并且这个bst不是严格平衡的话，我们可以做到更加优秀的复杂度，使得算上虚边之后的树树高达到O(logn)级别</span><br><span class="line"></span><br><span class="line">我们还是在树上dfs，但是对于重链建bst的时候我们并不建一个完美的bst，而是将每一个节点附上一个权值，权值为它所有轻儿子的siz之和 + 1，然后我们每次找这个链的带权重心，把他作为这一级的父亲，然后递归两边进行建bst。</span><br><span class="line"></span><br><span class="line">当然我们发现最坏情况下我们可以建出一个严重左倾或者右倾的bst。</span><br><span class="line"></span><br><span class="line">但是，我们考虑算上虚边的整颗树我们会发现一个神奇的性质，无论是经过一条重的二叉树边还是虚边，所在子树的siz至少翻一倍，而这个性质在原来的线段树上是没有的</span><br><span class="line"></span><br><span class="line">所以这个大bst的高度是O(logn)的</span><br></pre></td></tr></table></figure>
+
+<p>写起来还是挺好写的。</p>
+<p>$\Large 建树部分:$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">matrix</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line">	matrix() &#123; a[<span class="number">0</span>][<span class="number">0</span>] = a[<span class="number">1</span>][<span class="number">0</span>] = a[<span class="number">0</span>][<span class="number">1</span>] = a[<span class="number">1</span>][<span class="number">1</span>] = -inf; &#125;</span><br><span class="line">	matrix(<span class="keyword">bool</span> x) &#123; a[<span class="number">0</span>][<span class="number">0</span>] = a[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">0</span>, a[<span class="number">0</span>][<span class="number">1</span>] = a[<span class="number">1</span>][<span class="number">0</span>] = -inf; &#125;</span><br><span class="line">	<span class="keyword">friend</span> matrix <span class="keyword">operator</span>*(matrix a, matrix b) &#123;</span><br><span class="line">		matrix c;</span><br><span class="line">		<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (re j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">				<span class="keyword">for</span> (re k = <span class="number">0</span>; k &lt; <span class="number">2</span>; k++) &#123;</span><br><span class="line">					c[i][j] = max(c[i][j], a[i][k] + b[k][j]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> c;</span><br><span class="line">	&#125;</span><br><span class="line">	inl <span class="keyword">int</span> *<span class="keyword">operator</span>[](<span class="keyword">int</span> x) &#123; <span class="keyword">return</span> a[x]; &#125;</span><br><span class="line">	<span class="function">inl <span class="keyword">int</span> <span class="title">getmax</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> max(&#123; a[<span class="number">0</span>][<span class="number">0</span>], a[<span class="number">1</span>][<span class="number">0</span>], a[<span class="number">0</span>][<span class="number">1</span>], a[<span class="number">1</span>][<span class="number">1</span>] &#125;); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> siz[<span class="number">100001</span>], h[<span class="number">100001</span>];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ve[<span class="number">100001</span>];</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	siz[x] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> y : ve[x]) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!siz[y]) &#123;</span><br><span class="line">			dfs(y), siz[x] += siz[y], siz[y] &gt; siz[h[x]] ? h[x] = y : <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> ew[<span class="number">100001</span>], v[<span class="number">100001</span>], st[<span class="number">100001</span>], top, rt;</span><br><span class="line"><span class="keyword">bool</span> vis[<span class="number">100001</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> child[<span class="number">2</span>], fa;</span><br><span class="line">	matrix mul, w;</span><br><span class="line">&#125; t[<span class="number">100001</span>];</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	t[x].mul = t[ls(x)].mul * t[x].w * t[rs(x)].mul;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">upd</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	t[x].w[<span class="number">0</span>][<span class="number">0</span>] = (t[x].w[<span class="number">0</span>][<span class="number">1</span>] += t[y].mul.getmax());</span><br><span class="line">	t[x].w[<span class="number">1</span>][<span class="number">0</span>] += max(t[y].mul[<span class="number">0</span>][<span class="number">0</span>], t[y].mul[<span class="number">0</span>][<span class="number">1</span>]);</span><br><span class="line">	fa(y) = x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">int</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (l &gt; r) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	re sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = l; i &lt;= r; i++)</span><br><span class="line">		sum += ew[st[i]];</span><br><span class="line">	<span class="keyword">for</span> (re i = l, now = ew[st[i]]; i &lt;= r; now += ew[st[++i]]) &#123;</span><br><span class="line">		<span class="keyword">if</span> ((now &lt;&lt; <span class="number">1</span>) &gt;= sum) &#123;</span><br><span class="line">			ls(st[i]) = build(l, i - <span class="number">1</span>), rs(st[i]) = build(i + <span class="number">1</span>, r), pushup(st[i]);</span><br><span class="line">			<span class="keyword">if</span> (ls(st[i])) fa(ls(st[i])) = st[i];</span><br><span class="line">			<span class="keyword">if</span> (rs(st[i])) fa(rs(st[i])) = st[i];</span><br><span class="line">			<span class="keyword">return</span> st[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">int</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (re i = x; i; i = h[i])</span><br><span class="line">		ew[i] = siz[i] - siz[h[i]], vis[i] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = x; i; i = h[i]) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> y : ve[i]) &#123;</span><br><span class="line">			<span class="keyword">if</span> (!vis[y]) upd(i, build(y));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	top = <span class="number">0</span>; <span class="keyword">for</span> (re i = x; i; i = h[i])st[++top] = i;</span><br><span class="line">	<span class="keyword">return</span> build(<span class="number">1</span>, top);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>$\Large 修改：$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">inl <span class="keyword">bool</span> <span class="title">isroot</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> ls(fa(x)) != x &amp;&amp; rs(fa(x)) != x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">	t[x].w[<span class="number">1</span>][<span class="number">0</span>] += w - v[x], v[x] = w;</span><br><span class="line">	<span class="keyword">for</span> (re i = x; i; i = fa(i)) &#123;</span><br><span class="line">		<span class="keyword">if</span> (isroot(i) &amp;&amp; fa(i)) &#123;</span><br><span class="line">			t[fa(i)].w[<span class="number">0</span>][<span class="number">1</span>] = (t[fa(i)].w[<span class="number">0</span>][<span class="number">0</span>] -= t[i].mul.getmax());</span><br><span class="line">			t[fa(i)].w[<span class="number">1</span>][<span class="number">0</span>] -= max(t[i].mul[<span class="number">0</span>][<span class="number">1</span>], t[i].mul[<span class="number">0</span>][<span class="number">0</span>]);</span><br><span class="line">			pushup(i);</span><br><span class="line">			t[fa(i)].w[<span class="number">0</span>][<span class="number">1</span>] = (t[fa(i)].w[<span class="number">0</span>][<span class="number">0</span>] += t[i].mul.getmax());</span><br><span class="line">			t[fa(i)].w[<span class="number">1</span>][<span class="number">0</span>] += max(t[i].mul[<span class="number">0</span>][<span class="number">1</span>], t[i].mul[<span class="number">0</span>][<span class="number">0</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">		pushup(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>复杂度达到了优秀的一个$log$，并且常数也挺小的，跑的确实比树剖快，用这个就可以过掉强化版了。</p>
+<p>强化版<a href="https://www.luogu.org/problem/P4751" target="_blank" rel="noopener">link</a></p>
+<p>$\Large 例题\gamma$：</p>
+<p>这题算是老熟人了……，$noip2018D2T3$ 保卫王国</p>
+<p>动态$dp$板子题啊，把刚才的模板题稍微改一下就可以了（然而我还是重新写了一遍），本题所求即为总权值-带权最大独立集权值，修改就是改成正负$inf$，随便改一下就过了，当然也可以重新推个式子，式子也是非常的好推，这里就不在展示了。</p>
+<p>先写这么多，由于现在找不到题单，之后可能会更新。。。</p>
+
     </div>
 </article>
 
@@ -401,13 +462,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/06/04/洛谷-P4556-Vani有约会-雨天的尾巴/">洛谷 P4556 [Vani有约会] 雨天的尾巴</a>
+                    <a href="/2019/07/16/虚树学习笔记/">虚树学习笔记</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/07/15/洛谷-P3242-接水果/">洛谷-P3242-接水果</a>
+                    <a href="/2019/06/04/洛谷-P4556-Vani有约会-雨天的尾巴/">洛谷 P4556 [Vani有约会] 雨天的尾巴</a>
                 </span>
             </li>
             
@@ -440,21 +501,21 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/动态dp/" style="font-size: 14.140447784172371px;" class="tag-cloud-link">动态dp</a>
+    <a href="/tags/动态dp/" style="font-size: 15.145021563935963px;" class="tag-cloud-link">动态dp</a>
     
-    <a href="/tags/LCT/" style="font-size: 9.02597933967219px;" class="tag-cloud-link">LCT</a>
+    <a href="/tags/LCT/" style="font-size: 19.155435830800183px;" class="tag-cloud-link">LCT</a>
     
-    <a href="/tags/线段树/" style="font-size: 10.512137488892328px;" class="tag-cloud-link">线段树</a>
+    <a href="/tags/线段树/" style="font-size: 17.601307677234534px;" class="tag-cloud-link">线段树</a>
     
-    <a href="/tags/数学/" style="font-size: 17.098158323403048px;" class="tag-cloud-link">数学</a>
+    <a href="/tags/数学/" style="font-size: 12.040606323137279px;" class="tag-cloud-link">数学</a>
     
-    <a href="/tags/主席树/" style="font-size: 18.98296874703949px;" class="tag-cloud-link">主席树</a>
+    <a href="/tags/主席树/" style="font-size: 13.811480164449378px;" class="tag-cloud-link">主席树</a>
     
-    <a href="/tags/虚树/" style="font-size: 13.886716114391643px;" class="tag-cloud-link">虚树</a>
+    <a href="/tags/虚树/" style="font-size: 17.936577749183922px;" class="tag-cloud-link">虚树</a>
     
-    <a href="/tags/线段树合并/" style="font-size: 11.100675527405691px;" class="tag-cloud-link">线段树合并</a>
+    <a href="/tags/线段树合并/" style="font-size: 17.905133947294978px;" class="tag-cloud-link">线段树合并</a>
     
-    <a href="/tags/莫队/" style="font-size: 9.401624584338379px;" class="tag-cloud-link">莫队</a>
+    <a href="/tags/莫队/" style="font-size: 15.903565357464327px;" class="tag-cloud-link">莫队</a>
     
 </div>
                 
