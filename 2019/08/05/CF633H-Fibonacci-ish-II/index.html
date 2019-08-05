@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Geiz-Revive">
+    
+    
+    
+    
+    
+    
+    <title>CF633H-Fibonacci-ish-II | Geiz-Revive</title>
+    <link href="”http://Geiz-Revive.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/bg.png');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'https://pic.dark.moe/imgdata/2019/07/20/6ad8990ce0f29564be9fddbfd91c2fdf.png,https://pic.dark.moe/imgdata/2019/07/20/0a4da655a7060bf460cf5dbcf8269a10.png,https://pic.dark.moe/imgdata/2019/07/20/9167d78a6185e0295338933a28562141.png,https://pic.dark.moe/imgdata/2019/07/20/ef08018ffacf3f060d74e7aeac39387d.jpg,https://pic.dark.moe/imgdata/2019/07/20/865f8efc1699ae9b6c34012e610b79a4.png,https://pic.dark.moe/imgdata/2019/07/20/5e55dbb6ccec3b9920508d52d982ea4c.png,https://pic.dark.moe/imgdata/2019/07/20/b1c5e11c3570faeff1ce8b8fb07623db.png,https://pic.dark.moe/imgdata/2019/07/20/8e5f3e47e4b5bd2ff99f714f48c298a2.jpg,https://pic.dark.moe/imgdata/2019/07/20/6ae687025f7267086ad2e4e753f99289.jpg,https://pic.dark.moe/imgdata/2019/07/20/4858904c7b7c8856715d63c284647015.jpg,https://pic.dark.moe/imgdata/2019/07/19/8c2ecec2ff82bc0d9d9105b1f8679389.jpg,https://pic.dark.moe/imgdata/2019/07/19/e7c0c47f9fe186e799230d5436570e85.png,https://pic.dark.moe/imgdata/2019/07/19/e3f3a4b194a1aae70eb48dbbfcb6c8fc.jpg,https://pic.dark.moe/imgdata/2019/07/19/7cfdf7164a1e39f7d2cc2c71d9f27185.png,https://pic.dark.moe/imgdata/2019/07/19/56e4dc877192127926ca9099de606797.png,https://pic.dark.moe/imgdata/2019/07/19/ea3e898a00a4716f54c644dd7f3ec67a.jpg,https://pic.dark.moe/imgdata/2019/07/19/9d6deca31c052b79a020ae8ab5aa00ee.jpg,https://pic.dark.moe/imgdata/2019/07/19/1955676b126a49372ca1cc3ddcd0e567.jpg,https://pic.dark.moe/imgdata/2019/07/19/a9574507bdb45b1ef96a29f79d984ad9.jpg,https://pic.dark.moe/imgdata/2019/07/19/108acfa9e0c72c11742d54222b6e48b8.png,https://pic.dark.moe/imgdata/2019/07/19/bb0e4ea93bd29da0acf42ff65976227d.png,https://pic.dark.moe/imgdata/2019/07/19/5cd968228925b2b33788b9e0e7b18113.jpg,https://pic.dark.moe/imgdata/2019/07/19/6e49ee4d3dab9352cb575e3fe6f9696b.png,https://pic.dark.moe/imgdata/2019/07/19/218ae1d4a7de83c810c3550eae0aa28c.png,https://pic.dark.moe/imgdata/2019/07/19/092ce598378062deb0066c9954e73522.png,https://pic.dark.moe/imgdata/2019/07/19/c2c16d71ba99f2a18991597b33d5067e.jpg,https://pic.dark.moe/imgdata/2019/07/19/87a085b1156995df4275c9e132701d98.jpg,https://pic.dark.moe/imgdata/2019/07/19/0b6bddddc06fe9f8b2d83ef2de932059.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>revi</span></li>
+        <li><span>revi</span></li>
+        <li><span>revi</span></li>
+        <li><span>revi</span></li>
+        <li><span>revi</span></li>
+        <li><span>revi</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <div class="gal-menu gal-dropdown">
+    <div class="circle" id="gal">
+        <div class="ring">
+            <a href="http://Geiz-Revive.github.io" class="menuItem" style="left: 50%; top: 15%;">首页</a>
+            
+            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
+            
+            <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
+            <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
+            <a href="/message" class="menuItem" style="left: 19.6891%; top: 67.5%;">留言板</a>
+            
+            <a class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
+            
+        </div>
+        <audio id="audio" src="/imgs/oni.mp3"></audio>
+    </div>
+</div>
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-navbar-collapse" aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="http://Geiz-Revive.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">Geiz-Revive</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class>
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class>
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class>
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/莫队/">莫队</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/线段树/">线段树</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/主席树/">主席树</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class>
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="http://Geiz-Revive.github.io">Geiz-Revive</a>
+        >
+        <span>CF633H-Fibonacci-ish-II</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2019/08/05/CF633H-Fibonacci-ish-II/">CF633H-Fibonacci-ish-II</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/莫队/">莫队</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-08-05
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2019/08/05/CF633H-Fibonacci-ish-II/">CF633H-Fibonacci-ish-II</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-08-05
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/莫队/">莫队</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <p>莫队+线段树维护矩乘，复杂度$\Theta(T^3n\sqrt nlogn)$，也可以二次离线达到$\Theta(n\sqrt n)$的复杂度。</p>
+<p>挺不错的题，除了卡常和放了暴力过去之外都挺好的，看到没有正解的题解，我就来发一发。</p>
+<p>我们考虑加入一个数造成的影响，后面的数的矩阵都全部要乘以一个斐波那契递推的矩阵，我们考虑在权值线段树上维护，然后打上标记维护即可，细节挺多的，然后删除一个数就是后面的数乘一个逆矩阵即可。</p>
+<p>因为本题卡常，所以离散化后立即取模，避免用$long long$，减少不必要的取模，尽量精简函数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> region revive</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inl inline</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> re register int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fa(x) fa[x]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> son(x, y) t[x].child[y]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ls(x) child[x][0]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rs(x) child[x][1]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> ll Linf = <span class="number">0x3f3f3f3f3f3f3f3f</span>LL;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) ((x) &amp; (-x))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _DEBUG</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> getchar() (*(IOB.in.p++))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> putchar(c) (*(IOB.out.p++) = (c))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> io_eof() (IOB.in.p &gt;= IOB.in.pend)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">IOBUF</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">		<span class="keyword">char</span> buff[<span class="number">1</span> &lt;&lt; <span class="number">27</span>], *p, *pend;</span><br><span class="line">	&#125; in;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">		<span class="keyword">char</span> buff[<span class="number">1</span> &lt;&lt; <span class="number">27</span>], *p;</span><br><span class="line">	&#125; out;</span><br><span class="line">	IOBUF() &#123;</span><br><span class="line">		in.p = in.buff;</span><br><span class="line">		out.p = out.buff;</span><br><span class="line">		in.pend = in.buff + fread(in.buff, <span class="number">1</span>, <span class="number">1</span> &lt;&lt; <span class="number">27</span>, <span class="built_in">stdin</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	~IOBUF() &#123; fwrite(out.buff, <span class="number">1</span>, out.p - out.buff, <span class="built_in">stdout</span>); &#125;</span><br><span class="line">&#125; IOB;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> IO&gt;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">write</span><span class="params">(IO x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x == <span class="number">0</span>) <span class="keyword">return</span> (<span class="keyword">void</span>)<span class="built_in">putchar</span>(<span class="string">'0'</span>);</span><br><span class="line">	<span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="built_in">putchar</span>(<span class="string">'-'</span>), x = -x;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">char</span> buf[<span class="number">30</span>];</span><br><span class="line">	<span class="keyword">char</span> *p = buf;</span><br><span class="line">	<span class="keyword">while</span> (x) &#123;</span><br><span class="line">		*(p++) = x % <span class="number">10</span> + <span class="string">'0'</span>;</span><br><span class="line">		x /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (p &gt; buf)</span><br><span class="line">		<span class="built_in">putchar</span>(*(--p));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">writestr</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="number">0</span>)</span><br><span class="line">		<span class="built_in">putchar</span>(*(s++));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> IO&gt;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">writeln</span><span class="params">(IO x)</span> </span>&#123; write(x), <span class="built_in">putchar</span>(<span class="string">'\n'</span>); &#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> IO&gt;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">writesp</span><span class="params">(IO x)</span> </span>&#123; write(x), <span class="built_in">putchar</span>(<span class="string">' '</span>); &#125;</span><br><span class="line"><span class="function">inl <span class="keyword">int</span> <span class="title">readstr</span><span class="params">(<span class="keyword">char</span> *s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> *begin = s, c = getchar();</span><br><span class="line">	<span class="keyword">while</span> (c &lt; <span class="number">33</span> || c &gt; <span class="number">127</span>) &#123;</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (c &gt;= <span class="number">33</span> &amp;&amp; c &lt;= <span class="number">127</span>) &#123;</span><br><span class="line">		*(s++) = c;</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	*s = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> s - begin;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> IO&gt;</span><br><span class="line"><span class="function">inl IO <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	IO x = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">register</span> <span class="keyword">bool</span> w = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">register</span> <span class="keyword">char</span> c = getchar();</span><br><span class="line">	<span class="keyword">while</span> (c &gt; <span class="string">'9'</span> || c &lt; <span class="string">'0'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (c == <span class="string">'-'</span>) w = <span class="number">1</span>;</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">		x = (x &lt;&lt; <span class="number">3</span>) + (x &lt;&lt; <span class="number">1</span>) + (c ^ <span class="number">48</span>);</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> w ? -x : x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> endregion</span></span><br><span class="line"><span class="keyword">int</span> s[<span class="number">30001</span>], n, p, siz, mp[<span class="number">30001</span>], a[<span class="number">30001</span>], b[<span class="number">30001</span>], cnt[<span class="number">30001</span>];</span><br><span class="line">ll ans[<span class="number">30001</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">quiz</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> l, r, id;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> quiz&amp; a)<span class="keyword">const</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> s[l] == s[a.l] ? s[l] &amp; <span class="number">1</span> ? r&lt;a.r : r&gt;a.r : s[l] &lt; s[a.l];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;q[<span class="number">30001</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">matrix</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line">	matrix() &#123; a[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>, a[<span class="number">1</span>][<span class="number">0</span>] = a[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">0</span>, a[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>; &#125;</span><br><span class="line">	matrix(<span class="keyword">int</span> x) &#123;</span><br><span class="line">		<span class="keyword">if</span> (x == <span class="number">1</span>)a[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>, a[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>, a[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span>, a[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (!x)a[<span class="number">0</span>][<span class="number">0</span>] = a[<span class="number">0</span>][<span class="number">1</span>] = a[<span class="number">1</span>][<span class="number">0</span>] = a[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span> a[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>, a[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span>, a[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>, a[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	inl <span class="keyword">int</span>* <span class="keyword">operator</span>[](<span class="keyword">int</span> x) &#123; <span class="keyword">return</span> a[x]; &#125;</span><br><span class="line">	inl <span class="keyword">const</span> <span class="keyword">int</span>* <span class="keyword">operator</span>[](<span class="keyword">int</span> x) <span class="keyword">const</span> &#123; <span class="keyword">return</span> a[x]; &#125;</span><br><span class="line">	<span class="keyword">friend</span> matrix <span class="keyword">operator</span>*(<span class="keyword">const</span> matrix &amp;a, <span class="keyword">const</span> matrix &amp;b) &#123;</span><br><span class="line">		matrix c = matrix(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (re j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">				<span class="keyword">for</span> (re k = <span class="number">0</span>; k &lt; <span class="number">2</span>; k++) &#123;</span><br><span class="line">					c[i][j] += a[i][k] * b[k][j];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (re j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">				c[i][j] %= p;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> c;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">friend</span> matrix <span class="keyword">operator</span>+(<span class="keyword">const</span> matrix &amp;a, <span class="keyword">const</span> matrix &amp;b) &#123;</span><br><span class="line">		matrix c = matrix(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (re j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">				c[i][j] += a[i][j] + b[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (re j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">				c[i][j] %= p;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> c;</span><br><span class="line">	&#125;</span><br><span class="line">	matrix <span class="keyword">operator</span>*(<span class="keyword">int</span> x) &#123;</span><br><span class="line">		<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (re j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">				a[i][j] = a[i][j] * x;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (re j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">				a[i][j] %= p;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>==(<span class="keyword">const</span> matrix &amp;a, <span class="keyword">const</span> matrix &amp;b) &#123;</span><br><span class="line">		<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (re j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (a[i][j] != b[i][j])<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>!=(<span class="keyword">const</span> matrix &amp;a, <span class="keyword">const</span> matrix &amp;b) &#123;</span><br><span class="line">		<span class="keyword">return</span> !(a == b);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;E = matrix(), G = matrix(<span class="number">1</span>), R = matrix(<span class="number">-1</span>);</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> w;</span><br><span class="line">	matrix tag, ans;</span><br><span class="line">&#125;t[<span class="number">120001</span>];</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">upd</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	matrix a = t[k &lt;&lt; <span class="number">1</span>].ans, b = t[k &lt;&lt; <span class="number">1</span> | <span class="number">1</span>].ans;</span><br><span class="line">	<span class="keyword">if</span> (t[k &lt;&lt; <span class="number">1</span>].w != <span class="number">1</span>)a = a * t[k &lt;&lt; <span class="number">1</span>].w;</span><br><span class="line">	<span class="keyword">if</span> (t[k &lt;&lt; <span class="number">1</span> | <span class="number">1</span>].w != <span class="number">1</span>)b = b * t[k &lt;&lt; <span class="number">1</span> | <span class="number">1</span>].w;</span><br><span class="line">	t[k].ans = a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	t[k].w = l != r;</span><br><span class="line">	<span class="keyword">if</span> (l == r)<span class="keyword">return</span> (<span class="keyword">void</span>)(t[k].ans = G);</span><br><span class="line">	re mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	build(k &lt;&lt; <span class="number">1</span>, l, mid), build(k &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r);</span><br><span class="line">	upd(k);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> k, matrix w)</span> </span>&#123;</span><br><span class="line">	t[k].ans = t[k].ans*w, t[k].tag = t[k].tag*w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (t[k].tag != E) &#123;</span><br><span class="line">		mul(k &lt;&lt; <span class="number">1</span>, t[k].tag), mul(k &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, t[k].tag);</span><br><span class="line">		t[k].tag = E;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (l == r) <span class="keyword">return</span> (<span class="keyword">void</span>)(t[k].w = mp[p]);</span><br><span class="line">	pushdown(k);</span><br><span class="line">	re mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (p &lt;= mid)insert(k &lt;&lt; <span class="number">1</span>, l, mid, p), mul(k &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, G);</span><br><span class="line">	<span class="keyword">else</span> insert(k &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r, p);</span><br><span class="line">	upd(k);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">erase</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (l == r) <span class="keyword">return</span> (<span class="keyword">void</span>)(t[k].w = <span class="number">0</span>);</span><br><span class="line">	pushdown(k);</span><br><span class="line">	re mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (p &lt;= mid)erase(k &lt;&lt; <span class="number">1</span>, l, mid, p), mul(k &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, R);</span><br><span class="line">	<span class="keyword">else</span> erase(k &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r, p);</span><br><span class="line">	upd(k);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!cnt[x]++) insert(<span class="number">1</span>, <span class="number">1</span>, siz, x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!--cnt[x]) erase(<span class="number">1</span>, <span class="number">1</span>, siz, x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	n = read&lt;<span class="keyword">int</span>&gt;(), p = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt;= n; i++)a[i] = b[i] = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	sort(b + <span class="number">1</span>, b + <span class="number">1</span> + n);</span><br><span class="line">	siz = unique(b + <span class="number">1</span>, b + <span class="number">1</span> + n) - b - <span class="number">1</span>;</span><br><span class="line">	re m = read&lt;<span class="keyword">int</span>&gt;(), num = <span class="built_in">sqrt</span>(n);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		re k = a[i];</span><br><span class="line">		mp[a[i] = lower_bound(b + <span class="number">1</span>, b + <span class="number">1</span> + siz, a[i]) - b] = k % p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt;= <span class="number">30000</span>; i++)s[i] = (i - <span class="number">1</span>) / num + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt;= m; i++) q[i].l = read&lt;<span class="keyword">int</span>&gt;(), q[i].r = read&lt;<span class="keyword">int</span>&gt;(), q[i].id = i;</span><br><span class="line">	sort(q + <span class="number">1</span>, q + <span class="number">1</span> + m);</span><br><span class="line">	build(<span class="number">1</span>, <span class="number">1</span>, siz);</span><br><span class="line">	re l = <span class="number">1</span>, r = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">		<span class="keyword">while</span> (l &gt; q[i].l)add(a[--l]);</span><br><span class="line">		<span class="keyword">while</span> (r &lt; q[i].r)add(a[++r]);</span><br><span class="line">		<span class="keyword">while</span> (l &lt; q[i].l)del(a[l++]);</span><br><span class="line">		<span class="keyword">while</span> (r &gt; q[i].r)del(a[r--]);</span><br><span class="line">		ans[q[i].id] = t[<span class="number">1</span>].ans[<span class="number">0</span>][<span class="number">1</span>]%p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt;= m; i++)writeln((ans[i] % p + p) % p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get" action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            Geiz-Revive
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140" alt="个人头像" class="author-image">
+            <p class="author-description"></p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/05/CF633H-Fibonacci-ish-II/">CF633H-Fibonacci-ish-II</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/动态dp学习笔记/">动态dp学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/SP1716-GSS3/">SP1716-GSS3</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/18/杜教筛学习笔记/">杜教筛学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/16/虚树学习笔记/">虚树学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/15/洛谷-P3242-接水果/">洛谷-P3242-接水果</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/21/CF785E-Anton-and-Permutation/">CF785E-Anton-and-Permutation</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/20/CF474F-Ant-Colony/">CF474F-Ant-Colony</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/20/CF827D-BestEdgeWeight/">CF827D-BestEdgeWeight</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/19/洛谷-P4513-小白逛公园/">洛谷-P4513-小白逛公园</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/21/CF785E-Anton-and-Permutation/">CF785E-Anton-and-Permutation</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/SP1716-GSS3/">SP1716-GSS3</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/20/CF827D-BestEdgeWeight/">CF827D-BestEdgeWeight</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/15/洛谷-P3242-接水果/">洛谷-P3242-接水果</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/04/洛谷-P4556-Vani有约会-雨天的尾巴/">洛谷 P4556 [Vani有约会] 雨天的尾巴</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/16/虚树学习笔记/">虚树学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/19/洛谷-P4513-小白逛公园/">洛谷-P4513-小白逛公园</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/16/洛谷-P4374-Disruption/">洛谷-P4374-Disruption</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/18/杜教筛学习笔记/">杜教筛学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/动态dp学习笔记/">动态dp学习笔记</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2019/08/05/CF633H-Fibonacci-ish-II/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/05/CF633H-Fibonacci-ish-II/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/05/CF633H-Fibonacci-ish-II/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/莫队/" style="font-size: 8.764501673380149px;" class="tag-cloud-link">莫队</a>
+    
+    <a href="/tags/线段树/" style="font-size: 15.506268062053653px;" class="tag-cloud-link">线段树</a>
+    
+    <a href="/tags/主席树/" style="font-size: 18.48873854533791px;" class="tag-cloud-link">主席树</a>
+    
+    <a href="/tags/动态dp/" style="font-size: 14.3006723809076px;" class="tag-cloud-link">动态dp</a>
+    
+    <a href="/tags/LCT/" style="font-size: 15.387544610848781px;" class="tag-cloud-link">LCT</a>
+    
+    <a href="/tags/线段树合并/" style="font-size: 12.88695361533444px;" class="tag-cloud-link">线段树合并</a>
+    
+    <a href="/tags/虚树/" style="font-size: 13.271399236402955px;" class="tag-cloud-link">虚树</a>
+    
+    <a href="/tags/数学/" style="font-size: 18.568598570267568px;" class="tag-cloud-link">数学</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="https://ctz45562.github.io/" target="_blank">Ctz</a>
+    </li>
+    
+    <li>
+        <a href="https://stevebraveman.github.io/" target="_blank">Steve_braveman</a>
+    </li>
+    
+    <li>
+        <a href="https://xciyang.github.io/" target="_blank">Ciyang</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/Geiz-Revive" target="_blank">Github</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 Geiz-Revive Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '7'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+<script src="/js/oni.js"></script>
+
+
+
+</html>
