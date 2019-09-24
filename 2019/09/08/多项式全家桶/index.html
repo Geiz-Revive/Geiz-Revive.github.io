@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Geiz-Revive">
+    
+    
+    
+    
+    
+    
+    <title>多项式全家桶 | Geiz-Revive</title>
+    <link href="”http://Geiz-Revive.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/bg.png');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(1).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(2).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(3).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(4).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(5).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(6).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(7).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(8).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(9).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(10).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(11).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(12).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(13).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(14).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(15).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(16).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(17).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(18).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(19).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(20).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/alpha.jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/omega.jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/neo.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <div class="gal-menu gal-dropdown">
+    <div class="circle" id="gal">
+        <div class="ring">
+            <a href="http://Geiz-Revive.github.io" class="menuItem" style="left: 50%; top: 15%;">首页</a>
+            
+            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
+            
+            <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
+            <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
+            <a href="/message" class="menuItem" style="left: 19.6891%; top: 67.5%;">留言板</a>
+            
+            <a class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
+            
+        </div>
+        <audio id="audio" src="/imgs/oni.mp3"></audio>
+    </div>
+</div>
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-navbar-collapse" aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="http://Geiz-Revive.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">Geiz-Revive</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class>
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class>
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class>
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/莫队/">莫队</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/LCT/">LCT</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/线段树/">线段树</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class>
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="http://Geiz-Revive.github.io">Geiz-Revive</a>
+        >
+        <span>多项式全家桶</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2019/09/08/多项式全家桶/">多项式全家桶</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/多项式/">多项式</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-09-08
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2019/09/08/多项式全家桶/">多项式全家桶</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-09-08
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/多项式/">多项式</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <p>学了这么久多项式，是时候来个总结了。</p>
+<p>先从最初的$FFT$开始</p>
+<h2 id="FFT"><a href="#FFT" class="headerlink" title="$FFT$"></a>$FFT$</h2><p>快速傅里叶变换 ($\text{fast Fourier transform}$), 即利用计算机计算离散傅里叶变换($DFT$)的高效、快速计算方法的统称，简称FFT。</p>
+<p>（上面是从百科抄的</p>
+<p>FFT能在$\Theta(nlog_n)$的时间内求出一个多项式的点值表达的算法</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注：假设我们有一个n-1次的多项式，它的点值表达即用n个不同的x代入多项式所得到的n个y，这n对(x,y)唯一确定了该多项式。</span><br></pre></td></tr></table></figure>
+
+<p>然后FFT就是用一些特别的x的取值来快速的得出这n个y。</p>
+<p>前置芝士：复数</p>
+<p>一个复数可以写成$a+bi$的形式</p>
+<p>其中$i$叫虚数单位，$i=\sqrt{-1}$，可以把一个复数想象成一个向量$(a,bi)$</p>
+<p>复数相乘的规则：<strong>模长相乘，辐角相加。</strong></p>
+<p>但是$FFT$只用到了后半句（</p>
+<p>如果写成向量那么复数的运算就可以这样写：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">假设我们现在有两个复数 x(a,bi) 和 y(c,di)</span><br><span class="line">    x + y = (a + c,(b + d)i)</span><br><span class="line">    x - y = (a - c,(b - d)i)</span><br><span class="line">    x * y = (a * c - b * d,(a * c + b * d)i)</span><br><span class="line">其中乘法就是写成(a + bi) * (c + di)的形式再展开</span><br></pre></td></tr></table></figure>
+
+<p>$STL$提供了复数$complex$的模板，可以直接用，但是常数不小，建议手写。</p>
+<p>复数类的模板：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">complex</span> &#123;</span></span><br><span class="line">	<span class="keyword">double</span> x, y;</span><br><span class="line">	<span class="keyword">complex</span>(<span class="keyword">double</span> x = <span class="number">0</span>, <span class="keyword">double</span> y = <span class="number">0</span>) :x(x), y(y) &#123;&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">complex</span> <span class="keyword">operator</span> +(<span class="keyword">complex</span> a, <span class="keyword">complex</span> b) &#123; <span class="keyword">return</span> <span class="keyword">complex</span>(a.x + b.x, a.y + b.y); &#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">complex</span> <span class="keyword">operator</span> -(<span class="keyword">complex</span> a, <span class="keyword">complex</span> b) &#123; <span class="keyword">return</span> <span class="keyword">complex</span>(a.x - b.x, a.y - b.y); &#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">complex</span> <span class="keyword">operator</span> *(<span class="keyword">complex</span> a, <span class="keyword">complex</span> b) &#123; <span class="keyword">return</span> <span class="keyword">complex</span>(a.x * b.x - a.y * b.y, a.x * b.y + a.y * b.x); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后就是重头戏了：</p>
+<h3 id="单位根"><a href="#单位根" class="headerlink" title="单位根"></a>单位根</h3><p><del>看上去非常高大上对不对</del></p>
+<p>由于我们在上面说过，复数可以看做一个二维平面的向量，因此横轴表示实部，纵轴表示虚部。</p>
+<p>那么我们在这上面画一个单位圆</p>
+<p>从点$(1,0)$开始，逆时针将这$n$个点从$0$开始编号，第$k$个点记为$\omega^k_n$，由复数辐角相加的运算法则可知，$\omega^k_n$是$\omega^1_n$的$k$次方，因此$\omega_n^1$被称为$n$次单位根。</p>
+<p>显然$\omega^k_n$所对应的向量为$(cos\dfrac {k<em>2\pi} n,sin\dfrac {k</em>2\pi} n)$</p>
+<p>单位根的性质：</p>
+<p>首先由定义可知：</p>
+<ul>
+<li>$\omega^{2k}_{2n}=\omega^k_n$</li>
+</ul>
+<p>然后由三角函数的性质可知</p>
+<ul>
+<li>$\omega^{k+\frac n2}=-\omega^k_n$</li>
+</ul>
+<p>由单位根的性质可得</p>
+<p>把多项式A(x)的离散傅里叶变换结果作为另一个多项式B(x)的系数，取单位根的倒数即$\omega^0_n$,$ω^{−1}_n$,$ω^{−2}_n$,…,$ω^{−(n−1)}_n$作为x代入B(x)，得到的每个数再除以n，得到的是A(x)的各项系数。这实现了傅里叶变换的逆变换——把点值表示转换成多项式系数表示，这就是离散傅里叶变换神奇的特殊性质。</p>
+<p>证明略，想看的可以看<a href="https://www.cnblogs.com/RabbitHu/p/FFT.html" target="_blank" rel="noopener">这个</a></p>
+<p>FFT是基于分治的原理，利用单位根的奇偶性来使复杂度达到优秀的$\Theta(nlog_n)$，详细证明可以看上面给出的链接，这里不再赘述。</p>
+<p>其实FFT并不需要背过原理也不需要会证明，<del>因为过一段时间就忘了</del>，所以只有记住代码就可以了，代码其实理解了原理再稍微看看就刻在$DNA$里了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> region revive</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bitset&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inl inline</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> re register int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fa(x) t[x].fa</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> son(x, y) t[x].child[y]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ls(x) t[x].child[0]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rs(x) t[x].child[1]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) ((x) &amp; (-x))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _DEBUG</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> getchar() (*(IOB.in.p++))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> putchar(c) (*(IOB.out.p++) = (c))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> io_eof() (IOB.in.p &gt;= IOB.in.pend)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">IOBUF</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">		<span class="keyword">char</span> buff[<span class="number">1</span> &lt;&lt; <span class="number">26</span>], *p, *pend;</span><br><span class="line">	&#125; in;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">		<span class="keyword">char</span> buff[<span class="number">1</span> &lt;&lt; <span class="number">26</span>], *p;</span><br><span class="line">	&#125; out;</span><br><span class="line">	IOBUF() &#123;</span><br><span class="line">		in.p = in.buff;</span><br><span class="line">		out.p = out.buff;</span><br><span class="line">		in.pend = in.buff + fread(in.buff, <span class="number">1</span>, <span class="number">1</span> &lt;&lt; <span class="number">27</span>, <span class="built_in">stdin</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	~IOBUF() &#123; fwrite(out.buff, <span class="number">1</span>, out.p - out.buff, <span class="built_in">stdout</span>); &#125;</span><br><span class="line">&#125; IOB;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> IO&gt;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">write</span><span class="params">(IO x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x == <span class="number">0</span>) <span class="keyword">return</span> (<span class="keyword">void</span>)<span class="built_in">putchar</span>(<span class="string">'0'</span>);</span><br><span class="line">	<span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="built_in">putchar</span>(<span class="string">'-'</span>), x = -x;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">char</span> buf[<span class="number">30</span>];</span><br><span class="line">	<span class="keyword">char</span> *p = buf;</span><br><span class="line">	<span class="keyword">while</span> (x) &#123;</span><br><span class="line">		*(p++) = x % <span class="number">10</span> + <span class="string">'0'</span>;</span><br><span class="line">		x /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (p &gt; buf)</span><br><span class="line">		<span class="built_in">putchar</span>(*(--p));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">writestr</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="number">0</span>)</span><br><span class="line">		<span class="built_in">putchar</span>(*(s++));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> IO&gt;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">writeln</span><span class="params">(IO x)</span> </span>&#123; write(x), <span class="built_in">putchar</span>(<span class="string">'\n'</span>); &#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> IO&gt;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">writesp</span><span class="params">(IO x)</span> </span>&#123; write(x), <span class="built_in">putchar</span>(<span class="string">' '</span>); &#125;</span><br><span class="line"><span class="function">inl <span class="keyword">int</span> <span class="title">readstr</span><span class="params">(<span class="keyword">char</span> *s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> *begin = s, c = getchar();</span><br><span class="line">	<span class="keyword">while</span> (c &lt; <span class="number">33</span> || c &gt; <span class="number">127</span>) &#123;</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (c &gt;= <span class="number">33</span> &amp;&amp; c &lt;= <span class="number">127</span>) &#123;</span><br><span class="line">		*(s++) = c;</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	*s = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> s - begin;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> IO&gt;</span><br><span class="line"><span class="function">inl IO <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	IO x = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">register</span> <span class="keyword">bool</span> w = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">register</span> <span class="keyword">char</span> c = getchar();</span><br><span class="line">	<span class="keyword">while</span> (c &gt; <span class="string">'9'</span> || c &lt; <span class="string">'0'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (c == <span class="string">'-'</span>) w = <span class="number">1</span>;</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">		x = (x &lt;&lt; <span class="number">3</span>) + (x &lt;&lt; <span class="number">1</span>) + (c ^ <span class="number">48</span>);</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> w ? -x : x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;&gt;</span><br><span class="line">inl <span class="keyword">double</span> read&lt;<span class="keyword">double</span>&gt;() &#123;</span><br><span class="line">	<span class="keyword">double</span> x = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> w = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">	ll z = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">register</span> <span class="keyword">char</span> c = getchar();</span><br><span class="line">	<span class="keyword">while</span> (c &gt; <span class="string">'9'</span> || c &lt; <span class="string">'0'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (c == <span class="string">'-'</span>) w = <span class="number">1</span>;</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span> || c == <span class="string">'.'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (c == <span class="string">'.'</span>) &#123;</span><br><span class="line">			y = <span class="number">1</span>, c = getchar();</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		x = x * <span class="number">10</span> + (c ^ <span class="number">48</span>);</span><br><span class="line">		<span class="keyword">if</span> (y) z *= <span class="number">10</span>;</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> (w ? -x : x) / z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> endregion</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">4e6</span> + <span class="number">1</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">complex</span> &#123;</span></span><br><span class="line">	<span class="keyword">double</span> x, y;</span><br><span class="line">	<span class="keyword">complex</span>(<span class="keyword">double</span> x = <span class="number">0</span>, <span class="keyword">double</span> y = <span class="number">0</span>) :x(x), y(y) &#123;&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">complex</span> <span class="keyword">operator</span> +(<span class="keyword">complex</span> a, <span class="keyword">complex</span> b) &#123; <span class="keyword">return</span> <span class="keyword">complex</span>(a.x + b.x, a.y + b.y); &#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">complex</span> <span class="keyword">operator</span> -(<span class="keyword">complex</span> a, <span class="keyword">complex</span> b) &#123; <span class="keyword">return</span> <span class="keyword">complex</span>(a.x - b.x, a.y - b.y); &#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">complex</span> <span class="keyword">operator</span> *(<span class="keyword">complex</span> a, <span class="keyword">complex</span> b) &#123; <span class="keyword">return</span> <span class="keyword">complex</span>(a.x * b.x - a.y * b.y, a.x * b.y + a.y * b.x); &#125;</span><br><span class="line">&#125;a[N], b[N];</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Pi = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</span><br><span class="line"><span class="keyword">int</span> rev[N], lim = <span class="number">1</span>, lg;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">FFT</span><span class="params">(<span class="keyword">complex</span> *a, <span class="keyword">double</span> op)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++)<span class="keyword">if</span> (i &lt; rev[i])swap(a[i], a[rev[i]]);</span><br><span class="line">	<span class="keyword">for</span> (re mid = <span class="number">1</span>; mid &lt; lim; mid &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="function"><span class="keyword">complex</span> <span class="title">W</span><span class="params">(<span class="built_in">cos</span>(Pi / mid), op * <span class="built_in">sin</span>(Pi / mid))</span></span>;</span><br><span class="line">		<span class="keyword">for</span> (re r = mid &lt;&lt; <span class="number">1</span>, j = <span class="number">0</span>; j &lt; lim; j += r) &#123;</span><br><span class="line">			<span class="function"><span class="keyword">complex</span> <span class="title">w</span><span class="params">(<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">			<span class="keyword">for</span> (re k = <span class="number">0</span>; k &lt; mid; k++, w = w * W) &#123;</span><br><span class="line">				<span class="keyword">complex</span> x = a[j + k], y = w * a[j + k + mid];</span><br><span class="line">				a[j + k] = x + y;</span><br><span class="line">				a[j + k + mid] = x - y;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	re n = read&lt;<span class="keyword">int</span>&gt;(), m = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt;= n; i++)a[i].x = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt;= m; i++)b[i].x = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	<span class="keyword">while</span> (lim &lt;= n + m)lim &lt;&lt;= <span class="number">1</span>, lg++;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++)rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (lg - <span class="number">1</span>));</span><br><span class="line">	FFT(a, <span class="number">1</span>), FFT(b, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++)a[i] = a[i] * b[i];</span><br><span class="line">	FFT(a, <span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>, j = n + m; i &lt;= j; i++)writesp((<span class="keyword">int</span>)(a[i].x / lim + <span class="number">0.5</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="NTT"><a href="#NTT" class="headerlink" title="NTT"></a>NTT</h2><p>就是把FFT从复数域拉回了整数域，避免了精度的损失，同时能更方便的处理取模，常数也更小，就是把单位根通过数论的知识换成了原根，具体证明我不会，同时NTT对模数有很苛刻的要求，基本常用的就那么几个</p>
+<ul>
+<li><p>998244353</p>
+</li>
+<li><p>1004535809</p>
+</li>
+<li><p>469762049</p>
+</li>
+</ul>
+<p>这些模数必须是满足可以写成$r*2^k+1$的形式的质数</p>
+<p>原根g的定义：就是一个在$\text{mod p}$意义下，g的所有次幂正好对应了0到$p-1$内所有的数。</p>
+<p>这个性质非常的棒，可以在特定情况下把乘变成g的指数相加</p>
+<p>求原根的方法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">ordm</span><span class="params">(<span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">	re n = m - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">2</span>; i*i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (n%i == <span class="number">0</span>) &#123;</span><br><span class="line">			fac[++cnt] = i;</span><br><span class="line">			<span class="keyword">while</span> (n%i == <span class="number">0</span>)n /= i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (n - <span class="number">1</span>)fac[++cnt] = n;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">2</span>; i &lt; m; i++) &#123;</span><br><span class="line">		<span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">for</span> (re j = <span class="number">1</span>; j &lt;= cnt; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (qpow(i, (m - <span class="number">1</span>) / fac[j], m) == <span class="number">1</span>) &#123;</span><br><span class="line">				flag = <span class="literal">false</span>; <span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (flag) &#123; G = i; <span class="keyword">break</span>; &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>NTT就是把FFT单位根换成了原根，这样理解就够用了。</p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">NTT</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> lim, <span class="keyword">int</span> op = <span class="number">1</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; lim; i++)<span class="keyword">if</span> (i &lt; rev[i]) swap(a[i], a[rev[i]]);</span><br><span class="line">	<span class="keyword">for</span> (re mid = <span class="number">1</span>, r = <span class="number">2</span>; mid &lt; lim; mid &lt;&lt;= <span class="number">1</span>, r &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">		re g = qpow(op == <span class="number">1</span> ? G : iG, (p - <span class="number">1</span>) / r);<span class="comment">//iG为G在模P意义下的逆元</span></span><br><span class="line">		<span class="keyword">for</span> (re j = <span class="number">0</span>; j &lt; lim; j += r) &#123;</span><br><span class="line">			<span class="keyword">for</span> (re k = <span class="number">0</span>, gn = <span class="number">1</span>, x, y; k &lt; mid; k++, gn = <span class="number">1l</span>l * g * gn % p) &#123;</span><br><span class="line">				x = a[j + k], y = <span class="number">1l</span>l * a[j + k + mid] * gn % p;</span><br><span class="line">				a[j + k] = (x + y) % p, a[j + k + mid] = (x - y + p) % p;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (op != <span class="number">1</span>) &#123;</span><br><span class="line">		re inv = qpow(lim, p - <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) a[i] = <span class="number">1l</span>l * a[i] * inv % p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h2><p>​    已经学会了多项式乘法，我们就可以开始做题了，多项式乘法的题目最大的特点和难点就是要把题目给的信息抽象成一个卷积的形式，主要难点在化式子。</p>
+<p><a href="https://www.luogu.org/problem/P3338" target="_blank" rel="noopener">luogu P3338</a></p>
+<p><a href="https://www.luogu.org/problem/P3321" target="_blank" rel="noopener">luogu P3321</a></p>
+<p><a href="https://www.luogu.org/problem/P5488" target="_blank" rel="noopener">luogu P5488</a></p>
+<p><a href="https://www.luogu.org/problem/P3723" target="_blank" rel="noopener">luogu P3723</a></p>
+<p>先写到这里，剩下的有时间再补上</p>
+
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get" action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            Geiz-Revive
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140" alt="个人头像" class="author-image">
+            <p class="author-description"></p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/24/洛谷-P5350-序列/">洛谷-P5350-序列</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/08/多项式全家桶/">多项式全家桶</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/05/CF633H-Fibonacci-ish-II/">CF633H-Fibonacci-ish-II</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/动态dp学习笔记/">动态dp学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/SP1716-GSS3/">SP1716-GSS3</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/18/杜教筛学习笔记/">杜教筛学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/16/虚树学习笔记/">虚树学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/15/洛谷-P3242-接水果/">洛谷-P3242-接水果</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/21/CF785E-Anton-and-Permutation/">CF785E-Anton-and-Permutation</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/20/CF474F-Ant-Colony/">CF474F-Ant-Colony</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/05/CF633H-Fibonacci-ish-II/">CF633H-Fibonacci-ish-II</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/20/CF827D-BestEdgeWeight/">CF827D-BestEdgeWeight</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/18/杜教筛学习笔记/">杜教筛学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/15/洛谷-P3242-接水果/">洛谷-P3242-接水果</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/16/洛谷-P4374-Disruption/">洛谷-P4374-Disruption</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/19/洛谷-P4513-小白逛公园/">洛谷-P4513-小白逛公园</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/16/虚树学习笔记/">虚树学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/SP1716-GSS3/">SP1716-GSS3</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/08/多项式全家桶/">多项式全家桶</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/04/洛谷-P4556-Vani有约会-雨天的尾巴/">洛谷 P4556 [Vani有约会] 雨天的尾巴</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2019/09/08/多项式全家桶/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/09/08/多项式全家桶/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/09/08/多项式全家桶/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/莫队/" style="font-size: 11.263403816746411px;" class="tag-cloud-link">莫队</a>
+    
+    <a href="/tags/LCT/" style="font-size: 11.84992931815912px;" class="tag-cloud-link">LCT</a>
+    
+    <a href="/tags/线段树/" style="font-size: 16.390232149004266px;" class="tag-cloud-link">线段树</a>
+    
+    <a href="/tags/数学/" style="font-size: 8.447784732734899px;" class="tag-cloud-link">数学</a>
+    
+    <a href="/tags/主席树/" style="font-size: 10.253483782321737px;" class="tag-cloud-link">主席树</a>
+    
+    <a href="/tags/Splay/" style="font-size: 10.413694994326676px;" class="tag-cloud-link">Splay</a>
+    
+    <a href="/tags/虚树/" style="font-size: 17.150841367071365px;" class="tag-cloud-link">虚树</a>
+    
+    <a href="/tags/动态dp/" style="font-size: 17.89163958107234px;" class="tag-cloud-link">动态dp</a>
+    
+    <a href="/tags/多项式/" style="font-size: 10.676325606081441px;" class="tag-cloud-link">多项式</a>
+    
+    <a href="/tags/线段树合并/" style="font-size: 8.194654494046954px;" class="tag-cloud-link">线段树合并</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="https://ctz45562.github.io/" target="_blank">Ctz</a>
+    </li>
+    
+    <li>
+        <a href="https://stevebraveman.github.io/" target="_blank">Steve_braveman</a>
+    </li>
+    
+    <li>
+        <a href="https://xciyang.github.io/" target="_blank">Ciyang</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/Geiz-Revive" target="_blank">Github</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 Geiz-Revive Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+<script src="/js/oni.js"></script>
+
+
+
+</html>
