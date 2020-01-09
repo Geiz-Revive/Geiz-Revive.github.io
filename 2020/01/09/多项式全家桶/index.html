@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Geiz-Revive">
+    
+    
+    
+    
+    
+    
+    <title>多项式全家桶 | Geiz-Revive</title>
+    <link href="”http://Geiz-Revive.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/bg.png');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(1).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(2).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(3).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(4).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(5).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(6).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(7).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(8).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(9).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(10).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(11).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(12).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(13).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(14).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(15).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(16).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(17).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(18).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(19).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/heisei(20).jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/alpha.jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/omega.jpg,https://cdn.jsdelivr.net/gh/Geiz-Revive/cdn@1.3/neo.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <div class="gal-menu gal-dropdown">
+    <div class="circle" id="gal">
+        <div class="ring">
+            <a href="http://Geiz-Revive.github.io" class="menuItem" style="left: 50%; top: 15%;">首页</a>
+            
+            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
+            
+            <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
+            <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
+            <a href="/message" class="menuItem" style="left: 19.6891%; top: 67.5%;">留言板</a>
+            
+            <a class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
+            
+        </div>
+        <audio id="audio" src="/imgs/oni.mp3"></audio>
+    </div>
+</div>
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-navbar-collapse" aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="http://Geiz-Revive.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">Geiz-Revive</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class>
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class>
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class>
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/主席树/">主席树</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/线段树/">线段树</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/动态dp/">动态dp</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class>
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="http://Geiz-Revive.github.io">Geiz-Revive</a>
+        >
+        <span>多项式全家桶</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2020/01/09/多项式全家桶/">多项式全家桶</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/多项式/">多项式</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2020-01-09
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2020/01/09/多项式全家桶/">多项式全家桶</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2020-01-09
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/多项式/">多项式</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h2 id="FFT"><a href="#FFT" class="headerlink" title="$FFT$"></a>$FFT$</h2><p>快速傅里叶变换 ($\text{fast Fourier transform}$), 即利用计算机计算离散傅里叶变换($DFT$)的高效、快速计算方法的统称，简称FFT。</p>
+<p><del>（上面是从百科抄的</del></p>
+<p>FFT能在$\Theta(nlog_n)$的时间内求出一个多项式的点值表达的算法</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注：假设我们有一个n-1次的多项式，它的点值表达即用n个不同的x代入多项式所得到的n个y，这n对(x,y)唯一确定了该多项式。</span><br></pre></td></tr></table></figure>
+
+<p>然后FFT就是用一些特别的x的取值来快速的得出这n个y。</p>
+<p>前置芝士：复数</p>
+<p>一个复数可以写成$a+bi$的形式</p>
+<p>其中$i$叫虚数单位，$i=\sqrt{-1}$，可以把一个复数想象成一个向量$(a,bi)$</p>
+<p>复数相乘的规则：<strong>模长相乘，辐角相加。</strong></p>
+<p>但是$FFT$只用到了后半句（</p>
+<p>如果写成向量那么复数的运算就可以这样写：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">假设我们现在有两个复数 x(a,bi) 和 y(c,di)</span><br><span class="line">    x + y = (a + c,(b + d)i)</span><br><span class="line">    x - y = (a - c,(b - d)i)</span><br><span class="line">    x * y = (a * c - b * d,(a * c + b * d)i)</span><br><span class="line">其中乘法就是写成(a + bi) * (c + di)的形式再展开</span><br></pre></td></tr></table></figure>
+
+<p>$STL$提供了复数$complex$的模板，可以直接用，但是常数不小，建议手写。</p>
+<p>复数类的模板：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">complex</span> &#123;</span></span><br><span class="line">	<span class="keyword">double</span> x, y;</span><br><span class="line">	<span class="keyword">complex</span>(<span class="keyword">double</span> x = <span class="number">0</span>, <span class="keyword">double</span> y = <span class="number">0</span>) :x(x), y(y) &#123;&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">complex</span> <span class="keyword">operator</span> +(<span class="keyword">complex</span> a, <span class="keyword">complex</span> b) &#123; <span class="keyword">return</span> <span class="keyword">complex</span>(a.x + b.x, a.y + b.y); &#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">complex</span> <span class="keyword">operator</span> -(<span class="keyword">complex</span> a, <span class="keyword">complex</span> b) &#123; <span class="keyword">return</span> <span class="keyword">complex</span>(a.x - b.x, a.y - b.y); &#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">complex</span> <span class="keyword">operator</span> *(<span class="keyword">complex</span> a, <span class="keyword">complex</span> b) &#123; <span class="keyword">return</span> <span class="keyword">complex</span>(a.x * b.x - a.y * b.y, a.x * b.y + a.y * b.x); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后就是重头戏了：</p>
+<h3 id="单位根"><a href="#单位根" class="headerlink" title="单位根"></a>单位根</h3><p><del>看上去非常高大上对不对</del></p>
+<p>由于我们在上面说过，复数可以看做一个二维平面的向量，因此横轴表示实部，纵轴表示虚部。</p>
+<p>那么我们在这上面画一个单位圆</p>
+<p>从点$(1,0)$开始，逆时针将这$n$个点从$0$开始编号，第$k$个点记为$\omega^k_n$，由复数辐角相加的运算法则可知，$\omega^k_n$是$\omega^1_n$的$k$次方，因此$\omega_n^1$被称为$n$次单位根。</p>
+<p>显然$\omega^k_n$所对应的向量为$(cos\dfrac {k<em>2\pi} n,sin\dfrac {k</em>2\pi} n)$</p>
+<p>单位根的性质：</p>
+<p>首先由定义可知：</p>
+<ul>
+<li>$\omega^{2k}_{2n}=\omega^k_n$</li>
+</ul>
+<p>然后由三角函数的性质可知</p>
+<ul>
+<li>$\omega^{k+\frac n2}=-\omega^k_n$</li>
+</ul>
+<p>由单位根的性质可得</p>
+<p>把多项式A(x)的离散傅里叶变换结果作为另一个多项式B(x)的系数，取单位根的倒数即$\omega^0_n$,$ω^{−1}_n$,$ω^{−2}_n$,…,$ω^{−(n−1)}_n$作为x代入B(x)，得到的每个数再除以n，得到的是A(x)的各项系数。这实现了傅里叶变换的逆变换——把点值表示转换成多项式系数表示，这就是离散傅里叶变换神奇的特殊性质。</p>
+<p>证明略，想看的可以看<a href="https://www.cnblogs.com/RabbitHu/p/FFT.html" target="_blank" rel="noopener">这个</a>讲的非常的详细。</p>
+<p>FFT是基于分治的原理，利用单位根的奇偶性来使复杂度达到优秀的$\Theta(nlog_n)$，详细证明可以看上面给出的链接，这里不再赘述。</p>
+<p>其实FFT并不需要背过原理也不需要会证明，<del>因为过一段时间就忘了</del>，所以只有记住代码就可以了，代码其实理解了原理再稍微看看就刻在$DNA$里了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">4e6</span> + <span class="number">1</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">complex</span> &#123;</span></span><br><span class="line">	<span class="keyword">double</span> x, y;</span><br><span class="line">	<span class="keyword">complex</span>(<span class="keyword">double</span> x = <span class="number">0</span>, <span class="keyword">double</span> y = <span class="number">0</span>) :x(x), y(y) &#123;&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">complex</span> <span class="keyword">operator</span> +(<span class="keyword">complex</span> a, <span class="keyword">complex</span> b) &#123; <span class="keyword">return</span> <span class="keyword">complex</span>(a.x + b.x, a.y + b.y); &#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">complex</span> <span class="keyword">operator</span> -(<span class="keyword">complex</span> a, <span class="keyword">complex</span> b) &#123; <span class="keyword">return</span> <span class="keyword">complex</span>(a.x - b.x, a.y - b.y); &#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">complex</span> <span class="keyword">operator</span> *(<span class="keyword">complex</span> a, <span class="keyword">complex</span> b) &#123; <span class="keyword">return</span> <span class="keyword">complex</span>(a.x * b.x - a.y * b.y, a.x * b.y + a.y * b.x); &#125;</span><br><span class="line">&#125;a[N], b[N];</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Pi = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</span><br><span class="line"><span class="keyword">int</span> rev[N], lim = <span class="number">1</span>, lg;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">FFT</span><span class="params">(<span class="keyword">complex</span> *a, <span class="keyword">double</span> op)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++)<span class="keyword">if</span> (i &lt; rev[i])swap(a[i], a[rev[i]]);</span><br><span class="line">	<span class="keyword">for</span> (re mid = <span class="number">1</span>; mid &lt; lim; mid &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="function"><span class="keyword">complex</span> <span class="title">W</span><span class="params">(<span class="built_in">cos</span>(Pi / mid), op * <span class="built_in">sin</span>(Pi / mid))</span></span>;</span><br><span class="line">		<span class="keyword">for</span> (re r = mid &lt;&lt; <span class="number">1</span>, j = <span class="number">0</span>; j &lt; lim; j += r) &#123;</span><br><span class="line">			<span class="function"><span class="keyword">complex</span> <span class="title">w</span><span class="params">(<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">			<span class="keyword">for</span> (re k = <span class="number">0</span>; k &lt; mid; k++, w = w * W) &#123;</span><br><span class="line">				<span class="keyword">complex</span> x = a[j + k], y = w * a[j + k + mid];</span><br><span class="line">				a[j + k] = x + y;</span><br><span class="line">				a[j + k + mid] = x - y;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="NTT"><a href="#NTT" class="headerlink" title="NTT"></a>NTT</h2><p>就是把FFT从复数域拉回了整数域，避免了精度的损失，同时能更方便的处理取模，常数也更小，就是把单位根通过数论的知识换成了原根，具体证明我不会，同时NTT对模数有很苛刻的要求，基本常用的就那么几个</p>
+<ul>
+<li><p>998244353</p>
+</li>
+<li><p>1004535809</p>
+</li>
+<li><p>469762049</p>
+</li>
+</ul>
+<p>这些模数必须是满足可以写成$r*2^k+1$的形式的质数</p>
+<p>原根g的定义：就是一个在$\text{mod p}$意义下，g的所有次幂正好对应了0到$p-1$内所有的数。</p>
+<p>这个性质非常的棒，可以在特定情况下把乘变成g的指数相加</p>
+<p>求原根的方法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">ordm</span><span class="params">(<span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">	re n = m - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">2</span>; i*i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (n%i == <span class="number">0</span>) &#123;</span><br><span class="line">			fac[++cnt] = i;</span><br><span class="line">			<span class="keyword">while</span> (n%i == <span class="number">0</span>)n /= i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (n - <span class="number">1</span>)fac[++cnt] = n;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">2</span>; i &lt; m; i++) &#123;</span><br><span class="line">		<span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">for</span> (re j = <span class="number">1</span>; j &lt;= cnt; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (qpow(i, (m - <span class="number">1</span>) / fac[j], m) == <span class="number">1</span>) &#123;</span><br><span class="line">				flag = <span class="literal">false</span>; <span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (flag) &#123; G = i; <span class="keyword">break</span>; &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>NTT就是把FFT单位根换成了原根，这样理解就够用了。</p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">NTT</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> lim, <span class="keyword">int</span> op = <span class="number">1</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; lim; i++)<span class="keyword">if</span> (i &lt; rev[i]) swap(a[i], a[rev[i]]);</span><br><span class="line">	<span class="keyword">for</span> (re mid = <span class="number">1</span>, r = <span class="number">2</span>; mid &lt; lim; mid &lt;&lt;= <span class="number">1</span>, r &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">		re g = qpow(op == <span class="number">1</span> ? G : iG, (p - <span class="number">1</span>) / r);<span class="comment">//iG为G在模P意义下的逆元</span></span><br><span class="line">		<span class="keyword">for</span> (re j = <span class="number">0</span>; j &lt; lim; j += r) &#123;</span><br><span class="line">			<span class="keyword">for</span> (re k = <span class="number">0</span>, gn = <span class="number">1</span>, x, y; k &lt; mid; k++, gn = <span class="number">1l</span>l * g * gn % p) &#123;</span><br><span class="line">				x = a[j + k], y = <span class="number">1l</span>l * a[j + k + mid] * gn % p;</span><br><span class="line">				a[j + k] = (x + y) % p, a[j + k + mid] = (x - y + p) % p;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (op != <span class="number">1</span>) &#123;</span><br><span class="line">		re inv = qpow(lim, p - <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) a[i] = <span class="number">1l</span>l * a[i] * inv % p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h2><p>​    已经学会了多项式乘法，我们就可以开始做题了，多项式乘法的题目最大的特点和难点就是要把题目给的信息抽象成一个卷积的形式，主要难点在化式子。</p>
+<p><a href="https://www.luogu.org/problem/P3338" target="_blank" rel="noopener">luogu P3338</a></p>
+<p><a href="https://www.luogu.org/problem/P3321" target="_blank" rel="noopener">luogu P3321</a></p>
+<p><a href="https://www.luogu.org/problem/P5488" target="_blank" rel="noopener">luogu P5488</a></p>
+<p><a href="https://www.luogu.org/problem/P3723" target="_blank" rel="noopener">luogu P3723</a></p>
+<p>$\large upd: 2020.1.9:$鸽子回来补笔记了QAQ</p>
+<h2 id="求逆：给定多项式-F-x-，求出-G-x-满足-F-x-G-x-equiv-1-mod-x-n"><a href="#求逆：给定多项式-F-x-，求出-G-x-满足-F-x-G-x-equiv-1-mod-x-n" class="headerlink" title="求逆：给定多项式$F(x)$，求出$G(x)$满足$F(x)*G(x)\equiv 1 \ (mod\ x^n)$"></a>求逆：给定多项式$F(x)$，求出$G(x)$满足$F(x)*G(x)\equiv 1 \ (mod\ x^n)$</h2><p>注：如无特殊说明，下文证明过程中的$F$均指$F(x)$</p>
+<p>求逆运用了经典的倍增思想,假设我们已经求出了$F_0*G\equiv 1\ (mod\ x^{\frac{n}{2}})$</p>
+<p>显然$F*G\equiv 1\ (mod\ x^{\frac{n}{2}})$</p>
+<p>那么可以得到$F-F_0 \equiv 0\ (mod\ x^{\frac{n}{2}})$</p>
+<p>两边平方得 $F^2 -2F_0F+F_0^2\equiv 0\ (mod\ x^n)$</p>
+<p>两边同乘以$G(x)$得 $F-2F_0\times G+F_0^2\equiv 0(mod\ x^n)$</p>
+<p>移项得 $F\equiv F_0(2G-F_0)(mod\ x^n)$</p>
+<p>然后就可以倍增得出F，边界条件显然为$F(0)=inv(G(0))$</p>
+<p>求逆复杂度为$\Theta (nlogn)$,证明可通过主定理：$T(n)=T(n/2)+\Theta(n\log n)=\Theta (n \log n)$</p>
+<p>$luogu P4238$：<a href="https://www.luogu.com.cn/problem/P4238" target="_blank" rel="noopener">模板题</a></p>
+<p>$\large Code:$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">getinv</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> (<span class="keyword">void</span>)(g[<span class="number">0</span>] = qpow(f[<span class="number">0</span>], p - <span class="number">2</span>));</span><br><span class="line">	getinv(f, g, n &gt;&gt; <span class="number">1</span>);</span><br><span class="line">	re lim = <span class="number">1</span>, lg = <span class="number">-1</span>, *a = tmp[++cnt];</span><br><span class="line">	<span class="keyword">while</span> (lim &lt;= n) lim &lt;&lt;= <span class="number">1</span>, lg++;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; lim; i++) rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; lg);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) a[i] = f[i];</span><br><span class="line">	NTT(a, lim, <span class="number">1</span>), NTT(g, lim, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) g[i] = (<span class="number">2</span> - <span class="number">1l</span>l * a[i] * g[i] % p + p) % p * g[i] % p, a[i] = <span class="number">0</span>;</span><br><span class="line">	NTT(g, lim, <span class="number">-1</span>), cnt--;</span><br><span class="line">	<span class="keyword">for</span> (re i = n; i &lt; lim; i++) g[i] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ln-即自然对数，给出函数-G-x-，我们要求出满足-ln-G-x-equiv-F-x-mod-x-n-的-F-x"><a href="#ln-即自然对数，给出函数-G-x-，我们要求出满足-ln-G-x-equiv-F-x-mod-x-n-的-F-x" class="headerlink" title="$ln$:即自然对数，给出函数$G(x)$，我们要求出满足$ln(G(x))\equiv F(x) \ (mod\ x^n)$的$F(x)$"></a>$ln$:即自然对数，给出函数$G(x)$，我们要求出满足$ln(G(x))\equiv F(x) \ (mod\ x^n)$的$F(x)$</h2><p>前置芝士：基础求导和积分，<a href="https://baike.baidu.com/item/%E5%AF%BC%E6%95%B0/579188?fr=aladdin" target="_blank" rel="noopener">百度百科</a>和数学选修$2-2$课本都可以用来入门</p>
+<p>符号：$F’(x)$表示函数$F(x)$的一阶导，$\int F(x)$为函数$F(x)$的积分</p>
+<p>对于ln来说我们需要知道$ln’(x)=\dfrac 1 x$，多项式函数$F(x)=a_0+a_1x+a_2x^2+…+a_nx^n$的导数为$F’(x)=a_1+2a_2x+3a_3x^2+…+na_nx^{n-1}$，积分即为求导的逆运算$\int F’(x)+C=F(x)$其中C为常数，于是我们发现求导再积分会丢掉常数项，在某些情况下需要特殊处理。</p>
+<p>现在我们开始化式子</p>
+<p>$lnG\equiv F\ (mod\ x^n)$</p>
+<p>复合函数求导法则：$F(G(x))’=F’(G(x))*G’(x)$</p>
+<p>证明：设$u=G(x)$,则$F(u)’=\dfrac{dy}{du}<em>\dfrac{du}{dx}=F’(G(x))</em>G’(x)$</p>
+<p>两边求导得 $\dfrac{G’}{G}\equiv F’\ (mod\ x^n)$</p>
+<p>即$F\equiv \int (G’*G^{-1})\ (mod\ x^n)$</p>
+<p>之后一遍求导，一遍求逆，一遍积分即可。</p>
+<p>复杂度还是$\Theta(n\log n)$</p>
+<p>$\large Code:$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">der</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; n; i++) b[i - <span class="number">1</span>] = <span class="number">1l</span>l * a[i] * i % p;</span><br><span class="line">	b[n - <span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">&#125;<span class="comment">//求导</span></span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">inter</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; n; i++) b[i] = <span class="number">1l</span>l * a[i - <span class="number">1</span>] * qpow(i, p - <span class="number">2</span>) % p;</span><br><span class="line">	b[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">&#125;<span class="comment">//积分</span></span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">getln</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	re *a = tmp[++cnt], *b = tmp[++cnt], lim = <span class="number">1</span>, lg = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (lim &lt;= n) lim &lt;&lt;= <span class="number">1</span>, lg++;</span><br><span class="line">	der(f, a, n), getinv(f, b, n);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; lim; i++) rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; lg);</span><br><span class="line">	NTT(a, lim, <span class="number">1</span>), NTT(b, lim, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) a[i] = <span class="number">1l</span>l * a[i] * b[i] % p, b[i] = <span class="number">0</span>;</span><br><span class="line">	NTT(a, lim, <span class="number">-1</span>), inter(a, g, n);</span><br><span class="line">	<span class="keyword">for</span> (re i = n; i &lt; lim; i++) g[i] = a[i] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) a[i] = <span class="number">0</span>;</span><br><span class="line">	cnt -= <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="exp-多项式指数函数，即给出-F-x-求出-exp-G-x-equiv-F-x-mod-x-n-的-F-x"><a href="#exp-多项式指数函数，即给出-F-x-求出-exp-G-x-equiv-F-x-mod-x-n-的-F-x" class="headerlink" title="exp:多项式指数函数，即给出$F(x)$,求出$exp(G(x))\equiv F(x)\ (mod\ x^n)$的$F(x)$"></a>exp:多项式指数函数，即给出$F(x)$,求出$exp(G(x))\equiv F(x)\ (mod\ x^n)$的$F(x)$</h2><p>前置芝士：泰勒展开，牛顿迭代</p>
+<p>泰勒展开是用多项式函数拟合一个复杂的函数</p>
+<p>泰勒公式：$f(x)≈\sum\limits_{n=0}^{∞}\dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n$</p>
+<p>其中$f^{(n)}$为$f$的$n$阶导，通常$x_0$取$0$,此时也叫麦克劳林公式</p>
+<p>$f(x)≈\sum\limits_{n=0}^{∞}\dfrac{f^{(n)}(0)}{n!}x^n$</p>
+<p>牛顿迭代：已知多项式函数$G(x)$，用于求解复合函数$G(F(x))\equiv 0\ (mod\ x^n)$的$F(x)$</p>
+<p>同样使用与求逆类似的倍增思想，假设我们现在已经求出了 $G(F_0(x))\equiv 0\ (mod\ x^{\frac{n}{2}})$</p>
+<p>将函数 $G(F(x))$在$F_0(x)$处泰勒展开得$G(F(x))=G(F_0(x))+\dfrac{G(F_0(x))’}{1!}(F(x)-F_0(x))+\dfrac{G(F_0(x))’’}{2!}(F(x)-F_0(x))^2+…+\dfrac{G(F_0(x))^{(n)}}{n!}(F(x)-F_0(x))^n$</p>
+<p>因为 $F_0$与$F$的前$\dfrac{n}{2}$项相同,所以$(F(x)-F_0(x))^2$的最小非零项的次数大于$n$</p>
+<p>即 $G(F(x))\equiv G(F_0(x))+G(F_0(x))’*(F(x)-F_0(x))\ (mod \ x^n)$</p>
+<p>因为 $G(F(x))\equiv 0\ (mod\ x^{n})$</p>
+<p>所以 $F(x)\equiv F_0(x)-\dfrac{G(F_0(x))}{G(F_0(x))’}$</p>
+<p>然后考虑求$exp$</p>
+<p>$e^{G(x)}\equiv F(x)\ (mod\ x^n)$</p>
+<p>两边取$ln$得</p>
+<p>$ln(F(x))-G(x)\equiv 0\ (mod\ x^n)$</p>
+<p>我们不妨把$G(x)$看做常数，则可以设函数$H(F(x))=ln(F(x))-G(x)$</p>
+<p>代入牛顿迭代得$F(x)\equiv F_0(x)-\dfrac{ln(F_0(x))-G(x)}{\frac{1}{F_0(x)}}\ (mod\ x^n)$</p>
+<p>则$F(x)\equiv F_0(x)*(1-ln(F_0(x))+G(x))\equiv(mod\ x^n)$</p>
+<p>递归求解即可，边界条件因为$G(0)=0$,则$F(0)=1$</p>
+<p>同样由主定理分析可知，复杂度为$\Theta(n \log n)$</p>
+<p>$\large Code:$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">getexp</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> (<span class="keyword">void</span>)(g[<span class="number">0</span>] = <span class="number">1</span>);</span><br><span class="line">	getexp(f, g, n &gt;&gt; <span class="number">1</span>);</span><br><span class="line">	re lim = <span class="number">1</span>, lg = <span class="number">-1</span>, *a = tmp[++cnt], *b = tmp[++cnt];</span><br><span class="line">	<span class="keyword">while</span> (lim &lt;= n) lim &lt;&lt;= <span class="number">1</span>, lg++;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) b[i] = f[i];</span><br><span class="line">	getln(g, a, lim &gt;&gt; <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; lim; i++) rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; lg);</span><br><span class="line">	NTT(g, lim, <span class="number">1</span>), NTT(a, lim, <span class="number">1</span>), NTT(b, lim, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) g[i] = <span class="number">1l</span>l * g[i] * ((<span class="number">1l</span>l - a[i] + b[i] + p) % p) % p, a[i] = b[i] = <span class="number">0</span>;</span><br><span class="line">	NTT(g, lim, <span class="number">-1</span>), cnt -= <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = n; i &lt; lim; i++) g[i] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="带余除法：给定一个-n-次多项式-F-x-和一个-m-次多项式-G-x-，求出多项式-Q-x-R-x-，满足以下条件："><a href="#带余除法：给定一个-n-次多项式-F-x-和一个-m-次多项式-G-x-，求出多项式-Q-x-R-x-，满足以下条件：" class="headerlink" title="带余除法：给定一个 $n$ 次多项式 $F(x)$ 和一个 $m$ 次多项式 $G(x)$，求出多项式 $Q(x)$, $R(x)$，满足以下条件："></a>带余除法：给定一个 $n$ 次多项式 $F(x)$ 和一个 $m$ 次多项式 $G(x)$，求出多项式 $Q(x)$, $R(x)$，满足以下条件：</h3><ul>
+<li>$Q(x)$ 次数为 $n−m$，$R(x)$ 次数小于 $m$</li>
+<li>$F(x)=Q(x)∗G(x)+R(x)$</li>
+</ul>
+<p>显然有 $F(x^{-1})=G(x^{-1})*Q(x^{-1})+R(x^{-1})$</p>
+<p>定义$F_R=\sum\limits_{i=0}^nf_{i}x^{n-i}$</p>
+<p>两边同乘$x^n$得 $F_R(x)=G_R(x)*Q_R(x)+x^{n-m+1}R_R(x)$</p>
+<ul>
+<li><p>因为 $F(x^{-1})=\sum\limits_{i=0}^nf_ix^{-i}$</p>
+</li>
+<li><p>所以$x^n*F(x^{-1})=F_R(x)$，其中$n$为$F$的项数</p>
+</li>
+</ul>
+<p>两边模$x^{n-m+1}$得$F_R(x)\equiv G_R(x)*Q_R(x)\ (mod\ x^{n-m+1})$</p>
+<p>即 $Q(x)\equiv reverse(F_R(x)*G_R^{-1}(x)) (mod\ x^{n-m+1})$</p>
+<p>得到$Q(x)$以后就可以得到 $R(x)\equiv F(x)-Q(x)*G(x)(mod\ x^{m-1})$</p>
+<p>复杂度$\Theta(n\log n)$</p>
+<p>$\large Code:$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//F / G = Q + R</span></span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">division</span><span class="params">(<span class="keyword">int</span> *F, <span class="keyword">int</span> *G, <span class="keyword">int</span> *Q, <span class="keyword">int</span> *R, <span class="keyword">int</span> n, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> tmp1[N], tmp2[N];</span><br><span class="line">	reverse(F, F + <span class="number">1</span> + n), reverse(G, G + <span class="number">1</span> + m);</span><br><span class="line">	re lim = <span class="number">1</span>, lg = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (lim &lt;= (n &lt;&lt; <span class="number">1</span>)) lim &lt;&lt;= <span class="number">1</span>, lg++;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt;= n; i++) tmp1[i] = F[i];</span><br><span class="line">	getinv(G, tmp2, lim &gt;&gt; <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; lim; i++) rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; lg);</span><br><span class="line">	NTT(tmp1, lim, <span class="number">1</span>), NTT(tmp2, lim, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) Q[i] = <span class="number">1l</span>l * tmp1[i] * tmp2[i] % p, tmp1[i] = tmp2[i] = <span class="number">0</span>;</span><br><span class="line">	NTT(Q, lim, <span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = n - m + <span class="number">1</span>; i &lt; lim; i++) Q[i] = <span class="number">0</span>;</span><br><span class="line">	reverse(Q, Q + n - m + <span class="number">1</span>), reverse(F, F + <span class="number">1</span> + n), reverse(G, G + <span class="number">1</span> + m);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt;= n - m; i++) tmp1[i] = Q[i];</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt;= m; i++) tmp2[i] = G[i];</span><br><span class="line">	NTT(tmp1, lim, <span class="number">1</span>), NTT(tmp2, lim, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) R[i] = <span class="number">1l</span>l * tmp1[i] * tmp2[i] % p, tmp1[i] = tmp2[i] = <span class="number">0</span>;</span><br><span class="line">	NTT(R, lim, <span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = m; i &lt; lim; i++) R[i] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; m; i++) R[i] = (F[i] - R[i] + p) % p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="快速幂：给定一个-n−1-次多项式-A-x-，求一个在-bmod-x-n-意义下的多项式-B-x-，使得-B-x-equiv-A-k-x-bmod-x-n-，保证-a-0-1"><a href="#快速幂：给定一个-n−1-次多项式-A-x-，求一个在-bmod-x-n-意义下的多项式-B-x-，使得-B-x-equiv-A-k-x-bmod-x-n-，保证-a-0-1" class="headerlink" title="快速幂：给定一个$n−1$次多项式$A(x)$，求一个在 $\bmod\ x^n$意义下的多项式$B(x)$，使得$B(x) \equiv A^k(x) \ (\bmod\ x^n)$，保证$a_0=1$"></a>快速幂：给定一个$n−1$次多项式$A(x)$，求一个在 $\bmod\ x^n$意义下的多项式$B(x)$，使得$B(x) \equiv A^k(x) \ (\bmod\ x^n)$，保证$a_0=1$</h3><ul>
+<li>做法一：显然有$B(x)=exp(k*ln(A(x)))$，复杂度$\Theta(n\log n)$，常数极大</li>
+<li>做法二：像正常快速幂一样倍增，不过乘法换成NTT，复杂度$\Theta(n \log^2n )$</li>
+</ul>
+<p>这里只给出做法一的代码</p>
+<p>$\large Code:$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getln(f, h, n);</span><br><span class="line"><span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++)h[i] = (<span class="number">1l</span>l * h[i] * k) % p;</span><br><span class="line">getexp(h, g, n);</span><br></pre></td></tr></table></figure>
+
+<p>当$a_0!=1$时该怎么做呢？当然是把它变成$a_0=1$啦</p>
+<p>我们考虑把式子写成$A(x)=(\dfrac{A(x)}{a_0})^k*a_0^k$</p>
+<p>这样就完事了…吗？</p>
+<p>$a_0$是可以等于$0$的，所以当$a_0$等于$0$时便没法再这样做。</p>
+<p>假设$a_t$是第一个非零项,那么我们可以把$A$左移$t$位然后再按上面的做法去处理,只不过做完以后要再右移$min(t*k,n)$位<br>$\large Code:$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">getpow</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	re pos = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (f[<span class="number">0</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">			<span class="keyword">if</span> (f[i]) &#123;</span><br><span class="line">				pos = i, n -= pos;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	re *a = tmp[++cnt], *b = tmp[++cnt], innv = qpow(f[pos], p - <span class="number">2</span>), poi = qpow(f[pos], k), m = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (m &lt;= n) m &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) a[i] = <span class="number">1l</span>l * f[i + pos] * innv % p;</span><br><span class="line">	getln(a, b, m);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) b[i] = <span class="number">1l</span>l * b[i] * k % p;</span><br><span class="line">	<span class="keyword">for</span> (re i = n; i &lt; m; i++) b[i] = <span class="number">0</span>;</span><br><span class="line">	getexp(b, g, m);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) a[i] = b[i] = <span class="number">0</span>;</span><br><span class="line">	cnt -= <span class="number">2</span>, n += pos, pos = min(<span class="number">1l</span>l * n, <span class="number">1l</span>l * pos * k);</span><br><span class="line">	<span class="keyword">for</span> (re i = n - <span class="number">1</span>; ~i; i--) &#123;</span><br><span class="line">		<span class="keyword">if</span> (i + pos &lt; n) g[i + pos] = g[i];</span><br><span class="line">		<span class="keyword">if</span> (pos) g[i] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (re i = pos; i &lt; n; i++) g[i] = <span class="number">1l</span>l * g[i] * poi % p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="开根：给定一个-n−1-次多项式-A-x-，求一个在-bmod-x-n-意义下的多项式-B-x-，使得-B-2-x-equiv-A-x-bmod-x-n-。若有多解，取零次项系数较小的作为答案-保证-a-0-1"><a href="#开根：给定一个-n−1-次多项式-A-x-，求一个在-bmod-x-n-意义下的多项式-B-x-，使得-B-2-x-equiv-A-x-bmod-x-n-。若有多解，取零次项系数较小的作为答案-保证-a-0-1" class="headerlink" title="开根：给定一个$n−1$次多项式$A(x)$，求一个在 $\bmod\ x^n$意义下的多项式$B(x)$，使得$B^2(x) \equiv A(x) \ (\bmod\ x^n)$。若有多解，取零次项系数较小的作为答案,保证$a_0=1$"></a>开根：给定一个$n−1$次多项式$A(x)$，求一个在 $\bmod\ x^n$意义下的多项式$B(x)$，使得$B^2(x) \equiv A(x) \ (\bmod\ x^n)$。若有多解，取零次项系数较小的作为答案,保证$a_0=1$</h3><ul>
+<li>做法1：直接当成快速幂做，做法与上面相同，取$k$为$2$的逆元即可，复杂度$\Theta(n\log n)$</li>
+<li>做法2：化式子</li>
+</ul>
+<p>着重讲解一下做法2，因为做法1没有什么好讲的（</p>
+<p>$B^2-A\equiv 0(\bmod\ x^n)$</p>
+<p>这个式子很像上面牛顿迭代的式子，同样把A看做常数，直接代入。</p>
+<p>$B\equiv B_0-\dfrac{B_0^2-A}{2B_0}(\bmod\ x^n)$</p>
+<p>即$B\equiv (B_0^2+A)*2B_0^{-1} (\bmod\ x^n)$</p>
+<p>倍增即可，复杂度$\Theta(n\log n)$，实测常数大概比做法1小一倍。</p>
+<p>$\large Code:$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">getsqrt</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> (<span class="keyword">void</span>)(g[<span class="number">0</span>] = <span class="number">1</span>);</span><br><span class="line">	getsqrt(f, g, n &gt;&gt; <span class="number">1</span>);</span><br><span class="line">	re *a = tmp[++cnt], *b = tmp[++cnt], lim = <span class="number">1</span>, lg = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (lim &lt;= n) lim &lt;&lt;= <span class="number">1</span>, lg++;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) a[i] = f[i], b[i] = mod(g[i] &lt;&lt; <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; lim; i++) rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; lg);</span><br><span class="line">	NTT(a, lim, <span class="number">1</span>), NTT(g, lim, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) g[i] = (<span class="number">1l</span>l * g[i] * g[i] % p + a[i]) % p, a[i] = <span class="number">0</span>;</span><br><span class="line">	NTT(g, lim, <span class="number">-1</span>);</span><br><span class="line">	getinv(b, a, n);</span><br><span class="line">	<span class="keyword">for</span> (re i = n; i &lt; lim; i++) g[i] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; lim; i++) rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; lg);</span><br><span class="line">	NTT(a, lim, <span class="number">1</span>), NTT(g, lim, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) g[i] = <span class="number">1l</span>l * a[i] * g[i] % p, a[i] = b[i] = <span class="number">0</span>;</span><br><span class="line">	NTT(g, lim, <span class="number">-1</span>), cnt -= <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = n; i &lt; lim; i++) g[i] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后同理，我们考虑$a_0!=1$但保证$a_0$存在二次剩余时该怎么做。</p>
+<p>$\sqrt a_0$在模$P$意义下是什么？我们可以通过求二次剩余找出$\sqrt a_0$，不过显然不能$\Theta(p)$的枚举，我们需要一些高效的方法。</p>
+<p>设$p$的原根为$g$，由原根的性质可得，在模$p$意义下任何一个数$a$都可以被唯一的表示为$g^x\equiv a(\bmod\ p)$</p>
+<p>那么我们设$\sqrt{a_0}=3^x(\bmod\ 998244353)$</p>
+<p>则有$a_0=3^{2*x}(\bmod\ 998244353)$</p>
+<p>那么我们可以通过$BSGS$求解出$2x$，之后再一遍快速幂就能得出$\sqrt{a_0}$,复杂度为$\Theta(\sqrt p)$</p>
+<p>$\large Code:$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">inl <span class="keyword">int</span> <span class="title">BSGS</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mp;</span><br><span class="line">	re t = (<span class="keyword">int</span>)<span class="built_in">sqrt</span>(p) + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (re j = <span class="number">0</span>; j &lt; t; j++) &#123;</span><br><span class="line">		re w = <span class="number">1l</span>l * b * qpow(a, j) % p;</span><br><span class="line">		mp[w] = j;</span><br><span class="line">	&#125;</span><br><span class="line">	a = qpow(a, t);</span><br><span class="line">	<span class="keyword">if</span> (!a) <span class="keyword">return</span> b == <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt;= t; i++) &#123;</span><br><span class="line">		re w = qpow(a, i), j = mp.find(w) == mp.end() ? <span class="number">-1</span> : mp[w];</span><br><span class="line">		<span class="keyword">if</span> (j &gt;= <span class="number">0</span> &amp;&amp; i * t - j &gt;= <span class="number">0</span>) <span class="keyword">return</span> i * t - j;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">int</span> <span class="title">getkrt</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	re ret = qpow(<span class="number">3</span>, BSGS(<span class="number">3</span>, x) / k);</span><br><span class="line">	<span class="keyword">return</span> min(ret, p - ret);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">getsqrt</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> (<span class="keyword">void</span>)(g[<span class="number">0</span>] = getkrt(f[<span class="number">0</span>], <span class="number">2</span>));</span><br><span class="line">	getsqrt(f, g, n &gt;&gt; <span class="number">1</span>);</span><br><span class="line">	re *a = tmp[++cnt], *b = tmp[++cnt], lim = <span class="number">1</span>, lg = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (lim &lt;= n) lim &lt;&lt;= <span class="number">1</span>, lg++;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) a[i] = f[i], b[i] = mod(g[i] &lt;&lt; <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; lim; i++) rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; lg);</span><br><span class="line">	NTT(a, lim, <span class="number">1</span>), NTT(g, lim, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) g[i] = (<span class="number">1l</span>l * g[i] * g[i] % p + a[i]) % p, a[i] = <span class="number">0</span>;</span><br><span class="line">	NTT(g, lim, <span class="number">-1</span>);</span><br><span class="line">	getinv(b, a, n);</span><br><span class="line">	<span class="keyword">for</span> (re i = n; i &lt; lim; i++) g[i] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; lim; i++) rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; lg);</span><br><span class="line">	NTT(a, lim, <span class="number">1</span>), NTT(g, lim, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) g[i] = <span class="number">1l</span>l * a[i] * g[i] % p, a[i] = b[i] = <span class="number">0</span>;</span><br><span class="line">	NTT(g, lim, <span class="number">-1</span>), cnt -= <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = n; i &lt; lim; i++) g[i] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="多项式三角函数：给定一个-n-1-次多项式-A-x-，求一个-bmod-x-n-下的多项式-F-x-，满足-F-x-equiv-sin-A-x-或-F-x-equiv-cos-A-x-。"><a href="#多项式三角函数：给定一个-n-1-次多项式-A-x-，求一个-bmod-x-n-下的多项式-F-x-，满足-F-x-equiv-sin-A-x-或-F-x-equiv-cos-A-x-。" class="headerlink" title="多项式三角函数：给定一个$n-1$次多项式$A(x)$，求一个$\bmod{:x^n}$下的多项式$F(x)$，满足$F(x)\equiv\sin{A(x)}$或$F(x)\equiv\cos{A(x)})$。"></a>多项式三角函数：给定一个$n-1$次多项式$A(x)$，求一个$\bmod{:x^n}$下的多项式$F(x)$，满足$F(x)\equiv\sin{A(x)}$或$F(x)\equiv\cos{A(x)})$。</h3><p>对于这种函数图像复杂的函数，我们考虑用泰勒展开去拟合它。</p>
+<p>直接套麦克劳林公式能发现一些奇妙的性质：</p>
+<ul>
+<li>$sin(x)≈\sum\limits_{n=0}^∞(-1)^n\dfrac{x^{2n+1}}{(2n+1)!}$</li>
+<li>$cos(x)≈\sum\limits_{n=0}^∞(-1)^n\dfrac{x^{2n}}{(2n)!}$</li>
+<li>$e(x)≈\sum\limits_{n=0}^∞\dfrac{x^n}{n!}$</li>
+</ul>
+<p>我们发现这三者有一些奇妙的相似，似乎我们将一个周期性引入$-1$的东西代入$e(x)$就可以找到三者的联系。</p>
+<p>众所周知，虚数单位$i$的周期为$4$，$i^{4n}=1,i^{4n+1}=i,i^{4n+2}=-1,i^{4n+3}=-i$</p>
+<p>那么我们不妨把$ix$代入$e(x)$,就得到了一个非常有趣的结果：</p>
+<p>$e^{ix}≈ \sum\limits^∞_{n=0}\dfrac{(ix)^n}{n!}=(1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+…)+i(\frac{x}{1!}-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+…)$</p>
+<p>两部分似乎和$cos$和$sin$的形式非常相似，事实上，他们是完 全 一 致的</p>
+<p>$cos(x)≈\sum\limits_{n=0}^∞(-1)^n\dfrac{x^{2n}}{(2n)!}=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+…$</p>
+<p>$sin(x)≈\sum\limits_{n=0}^∞(-1)^n\dfrac{x^{2n+1}}{(2n+1)!}=\frac{x}{1!}-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+…$</p>
+<p>即$e^{ix}=cos(x)+isin(x)$，这也就是大名鼎鼎的欧拉公式。</p>
+<p>同理我们代入$-ix$得到$e^{-ix}=cos(x)-isin(x)$，因为$cos$全为偶次幂，所以符号不变，$sin$全为奇数次幂，所以符号改变。</p>
+<p>那么易知 $cos(x)=\dfrac{e^{ix}+e^{-ix}}{2}$，$sin(x)=\dfrac{e^{ix}-e^{ix}}{2i}$</p>
+<p>然后通过二次剩余找出$i$在模$p$意义下的值，求$exp$即可，$i$在模$998244353$意义下为$86583718$</p>
+<p>$\large Code:$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">getcos</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	re *a = tmp[++cnt], *b = tmp[++cnt], *c = tmp[++cnt], innv = <span class="number">499122177</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) c[i] = <span class="number">1l</span>l * img * f[i] % p;</span><br><span class="line">	getexp(c, a, n), getinv(a, b, n);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) g[i] = <span class="number">1l</span>l * innv * (a[i] + b[i]) % p, a[i] = b[i] = c[i] = <span class="number">0</span>;</span><br><span class="line">	cnt -= <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">getsin</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	re *a = tmp[++cnt], *b = tmp[++cnt], *c = tmp[++cnt], innv = <span class="number">954952494</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) c[i] = <span class="number">1l</span>l * img * f[i] % p;</span><br><span class="line">	getexp(c, a, n), getinv(a, b, n);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) g[i] = <span class="number">1l</span>l * innv * ((a[i] - b[i]) % p + p) % p, a[i] = b[i] = c[i] = <span class="number">0</span>;</span><br><span class="line">	cnt -= <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="反三角函数：给定一个-n−1-次多项式-A-x-，求一个-bmod-x-n-下的多项式-F-x-，满足-F-x-equiv-text-asin-A-x-或-F-x-equiv-text-atan-A-x-。"><a href="#反三角函数：给定一个-n−1-次多项式-A-x-，求一个-bmod-x-n-下的多项式-F-x-，满足-F-x-equiv-text-asin-A-x-或-F-x-equiv-text-atan-A-x-。" class="headerlink" title="反三角函数：给定一个$n−1$次多项式$A(x)$，求一个 $\bmod{:x^n}$下的多项式$F(x)$，满足$F(x)\equiv\text{asin}:A(x)$或$F(x)\equiv\text{atan}:A(x)$。"></a>反三角函数：给定一个$n−1$次多项式$A(x)$，求一个 $\bmod{:x^n}$下的多项式$F(x)$，满足$F(x)\equiv\text{asin}:A(x)$或$F(x)\equiv\text{atan}:A(x)$。</h3><p>首先我们需要了解反函数求导法则：反函数的导数是原函数的导数的倒数(自变量为$y$)</p>
+<p>例如 $y=\arcsin x$，显然可以转化为$\sin y=x$</p>
+<p>两边求导得 $y’\cos y=1$，即$y’=\frac{1}{\cos y}$</p>
+<p>由$\sin^2 x+\cos^2 x=1$得$y’=\dfrac{1}{\sqrt{1-\sin^2y}}=\dfrac{1}{\sqrt{1-x^2}}$</p>
+<p>同理可得 $y=\arccos x$的导数为$\dfrac{1}{-\sqrt{1-\cos^2y}}=\dfrac{1}{-\sqrt{1-x^2}}$</p>
+<p>即$F(x)\equiv\dfrac{1}{\sqrt{1-A^2(x)}}(\bmod:x^n)$</p>
+<p>然后是$\arctan(x)$的导数，要求这个我们要先知道$\tan(x)$的导数。</p>
+<p>导数的除法法则：$(\frac{u}{v})’=\dfrac{uv’-u’v}{u^2}$</p>
+<p>证明的话套导数定义即可，可以先求出$\frac{1}{v}$的导数，然后再用复合函数求导得出$(\frac{u}{v})’$</p>
+<p>知道了这个就可以很方便的求出$tan(x)$的导数。</p>
+<p>$tan’(x)=(\dfrac{\sin(x)}{\cos(x)})’=\dfrac{\sin^2(x)+\cos^2(x)}{\cos^2(x)}=\dfrac{1}{\cos^2(x)}=\dfrac{\sin^2(x)}{\cos^2(x)}+1=\tan^2(x)+1$</p>
+<p>然后就可以求$\arctan$了，与上面相同，我们设$y=\arctan x$,即$\tan y=x$</p>
+<p>两边求导得$y’=\dfrac{1}{1+\tan^2 y}=\dfrac{1}{1+x^2}$</p>
+<p>即$F(x)\equiv\dfrac{1}{1+A^2(x)}(\bmod:x^n)$</p>
+<p>直接上开根求逆即可，复杂度$\Theta(n\log n)$</p>
+<p>$\large Code:$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">arcsin</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	re *a = tmp[++cnt], *b = tmp[++cnt], *c = tmp[++cnt], lim = <span class="number">1</span>, lg = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) a[i] = f[i];</span><br><span class="line">	<span class="keyword">while</span> (lim &lt;= n) lim &lt;&lt;= <span class="number">1</span>, lg++;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; lim; i++) rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; lg);</span><br><span class="line">	NTT(a, lim, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) a[i] = (<span class="number">1l</span>l - <span class="number">1l</span>l * a[i] * a[i] % p + p) % p;</span><br><span class="line">	NTT(a, lim, <span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = n; i &lt; lim; i++) a[i] = <span class="number">0</span>;</span><br><span class="line">	getsqrt(a, b, n), der(f, c, n);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) a[i] = <span class="number">0</span>;</span><br><span class="line">	getinv(b, a, n);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; lim; i++) rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; lg);</span><br><span class="line">	NTT(a, lim, <span class="number">1</span>), NTT(c, lim, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) b[i] = <span class="number">1l</span>l * a[i] * c[i] % p, a[i] = c[i] = <span class="number">0</span>;</span><br><span class="line">	NTT(b, lim, <span class="number">-1</span>), inter(b, g, n);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) b[i] = <span class="number">0</span>;</span><br><span class="line">	cnt -= <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">inl <span class="keyword">void</span> <span class="title">arctan</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> *g, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	re *a = tmp[++cnt], *b = tmp[++cnt], *c = tmp[++cnt], lim = <span class="number">1</span>, lg = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) a[i] = f[i];</span><br><span class="line">	<span class="keyword">while</span> (lim &lt;= n) lim &lt;&lt;= <span class="number">1</span>, lg++;</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">1</span>; i &lt; lim; i++) rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; lg);</span><br><span class="line">	NTT(a, lim, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) a[i] = (<span class="number">1l</span>l + <span class="number">1l</span>l * a[i] * a[i] % p + p) % p;</span><br><span class="line">	NTT(a, lim, <span class="number">-1</span>), der(f, c, n);</span><br><span class="line">	<span class="keyword">for</span> (re i = n; i &lt; lim; i++) a[i] = <span class="number">0</span>;</span><br><span class="line">	getinv(a, b, n);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; n; i++) a[i] = <span class="number">0</span>;</span><br><span class="line">	NTT(b, lim, <span class="number">1</span>), NTT(c, lim, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) b[i] = <span class="number">1l</span>l * b[i] * c[i] % p, c[i] = <span class="number">0</span>;</span><br><span class="line">	NTT(b, lim, <span class="number">-1</span>), inter(b, g, n);</span><br><span class="line">	<span class="keyword">for</span> (re i = <span class="number">0</span>; i &lt; lim; i++) b[i] = <span class="number">0</span>;</span><br><span class="line">	cnt -= <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分治NTT：给定长度为-n−1-的数组-g-1-g-2-g-n−1-，求-f-0-f-1-f-n−1-，其中"><a href="#分治NTT：给定长度为-n−1-的数组-g-1-g-2-g-n−1-，求-f-0-f-1-f-n−1-，其中" class="headerlink" title="分治NTT：给定长度为 $n−1$ 的数组 $g[1],g[2],..,g[n−1]$，求 $f[0],f[1],..,f[n−1]$，其中"></a>分治NTT：给定长度为 $n−1$ 的数组 $g[1],g[2],..,g[n−1]$，求 $f[0],f[1],..,f[n−1]$，其中</h3><p>$f[i]=\sum_{j=1}^if[i-j]g[j]$，边界为 $f[0]=1$，答案模 $998244353$。</p>
+<p>除了分治$NTT$之外还可以用多项式求逆$\Theta(n\log n)$解决，先说明一下多项式求逆的做法：</p>
+<p>设序列$f$的生成函数$F(x)=[n=0]+\sum\limits_{i=1}^∞ f_ix^i$，设$g[0]=0$，$g$的生成函数$G(x)=\sum\limits_{i=0}^∞ g_ix^i$</p>
+<p>那么显然有$F(x)=f_0+F(x)*G(x)$</p>
+<p>然后移项可得$F(x)=\dfrac{f_0}{1-G(x)}$，直接计算即可。</p>
+<p>既然多项式求逆这么$dio$，为什么我们还要去学复杂度为$\Theta(n\log^2 n)$的分治$NTT$呢？</p>
+<p>因为分治$NTT$可以用来优化一堆多项式的暴力卷积，还有一些其他的玄妙用途。</p>
+<p>回到这题，对于这题来说，分治$NTT$就是运用了$cdq$分治优化$dp$的思路，每次把区间分为两段，先做左半段，然后用$NTT$计算左半段对右半段的贡献，再算右半段。</p>
+<p>左边点对右边的贡献$w_x=\sum\limits_{i=l}^{mid}f_i*g_{x-i}$，这显然是个卷积的形式，直接$NTT$计算即可，然后加到右边的答案数组里。</p>
+<h1 id="至此，多项式的模板学习告一段落"><a href="#至此，多项式的模板学习告一段落" class="headerlink" title="至此，多项式的模板学习告一段落"></a>至此，多项式的模板学习告一段落</h1>
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get" action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            Geiz-Revive
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140" alt="个人头像" class="author-image">
+            <p class="author-description"></p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2020/01/09/多项式全家桶/">多项式全家桶</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/09/24/洛谷-P5350-序列/">洛谷-P5350-序列</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/05/CF633H-Fibonacci-ish-II/">CF633H-Fibonacci-ish-II</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/动态dp学习笔记/">动态dp学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/SP1716-GSS3/">SP1716-GSS3</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/18/杜教筛学习笔记/">杜教筛学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/16/虚树学习笔记/">虚树学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/15/洛谷-P3242-接水果/">洛谷-P3242-接水果</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/21/CF785E-Anton-and-Permutation/">CF785E-Anton-and-Permutation</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/20/CF474F-Ant-Colony/">CF474F-Ant-Colony</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/21/CF785E-Anton-and-Permutation/">CF785E-Anton-and-Permutation</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/20/CF474F-Ant-Colony/">CF474F-Ant-Colony</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/SP1716-GSS3/">SP1716-GSS3</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/20/CF827D-BestEdgeWeight/">CF827D-BestEdgeWeight</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/05/CF633H-Fibonacci-ish-II/">CF633H-Fibonacci-ish-II</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/04/洛谷-P4556-Vani有约会-雨天的尾巴/">洛谷 P4556 [Vani有约会] 雨天的尾巴</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/07/15/洛谷-P3242-接水果/">洛谷-P3242-接水果</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/06/16/洛谷-P4374-Disruption/">洛谷-P4374-Disruption</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/动态dp学习笔记/">动态dp学习笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2020/01/09/多项式全家桶/">多项式全家桶</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2020/01/09/多项式全家桶/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2020/01/09/多项式全家桶/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2020/01/09/多项式全家桶/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/主席树/" style="font-size: 16.22875104322621px;" class="tag-cloud-link">主席树</a>
+    
+    <a href="/tags/线段树/" style="font-size: 19.318916848072345px;" class="tag-cloud-link">线段树</a>
+    
+    <a href="/tags/动态dp/" style="font-size: 8.639119737489384px;" class="tag-cloud-link">动态dp</a>
+    
+    <a href="/tags/数学/" style="font-size: 14.170347438419153px;" class="tag-cloud-link">数学</a>
+    
+    <a href="/tags/LCT/" style="font-size: 11.6402130663351px;" class="tag-cloud-link">LCT</a>
+    
+    <a href="/tags/莫队/" style="font-size: 12.516117103603879px;" class="tag-cloud-link">莫队</a>
+    
+    <a href="/tags/线段树合并/" style="font-size: 11.864258167743618px;" class="tag-cloud-link">线段树合并</a>
+    
+    <a href="/tags/虚树/" style="font-size: 13.980599864162873px;" class="tag-cloud-link">虚树</a>
+    
+    <a href="/tags/Splay/" style="font-size: 11.283329868761255px;" class="tag-cloud-link">Splay</a>
+    
+    <a href="/tags/多项式/" style="font-size: 19.77231293568523px;" class="tag-cloud-link">多项式</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="https://ctz45562.github.io/" target="_blank">Ctz</a>
+    </li>
+    
+    <li>
+        <a href="https://stevebraveman.github.io/" target="_blank">Steve_braveman</a>
+    </li>
+    
+    <li>
+        <a href="https://xciyang.github.io/" target="_blank">Ciyang</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/Geiz-Revive" target="_blank">Github</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 Geiz-Revive Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+<script src="/js/oni.js"></script>
+
+
+
+</html>
